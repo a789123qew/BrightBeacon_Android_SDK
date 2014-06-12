@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/BRT/!svn/ver/7/Android/sample/res/layout
+END
+distance_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BRT/!svn/ver/7/Android/sample/res/layout/distance_view.xml
+END
+main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/BRT/!svn/ver/7/Android/sample/res/layout/main.xml
+END
+notify_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BRT/!svn/ver/7/Android/sample/res/layout/notify_demo.xml
+END
+device_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BRT/!svn/ver/7/Android/sample/res/layout/device_item.xml
+END
+gatt_services_characteristics.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/BRT/!svn/ver/7/Android/sample/res/layout/gatt_services_characteristics.xml
+END
+actionbar_indeterminate_progress.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/BRT/!svn/ver/7/Android/sample/res/layout/actionbar_indeterminate_progress.xml
+END
+all_demos.xml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BRT/!svn/ver/7/Android/sample/res/layout/all_demos.xml
+END
+characteristics_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/BRT/!svn/ver/62/Android/sample/res/layout/characteristics_demo.xml
+END
