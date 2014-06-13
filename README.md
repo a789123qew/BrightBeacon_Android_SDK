@@ -1,5 +1,5 @@
 Android-SDK
-===========
+=========== 
 
 Bright SDK for Android Bright SDK for Android is a library to allow interaction with iBeacons. The SDK system requirements are Android 4.3 or above and Bluetooth Low Energy.
 
