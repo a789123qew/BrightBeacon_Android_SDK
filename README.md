@@ -9,10 +9,10 @@ It mimics [Bright SDK for iOS](https://github.com/BrightBeacon/iOS-SDK.git). All
 It allows for:
 - beacon ranging (scan beacons and optionally filters them by their values)
 - beacon monitoring (monitors regions for those devices that have entered/exited a region)
-- beacon characteristic reading and writing (proximity UUID, major & minor values, broadcasting power, advertising interval), see [BeaconConnection] (https://github.com/BrightBeacon/Android-SDK/Decuments/com/bright/sdk/connection/BeaconConnection.html) class and [demos](https://github.com/BrightBeacon/Android-SDK/tree/master/Examples) in the SDK
+- beacon characteristic reading and writing (proximity UUID, major & minor values, broadcasting power, advertising interval), see [BeaconConnection] (https://github.com/BrightBeacon/Android-SDK/Documents/com/bright/sdk/connection/BeaconConnection.html) class and [demos](https://github.com/BrightBeacon/Android-SDK/tree/master/Examples) in the SDK
 
 Docs: 
- - [Current JavaDoc documentation](https://github.com/BrightBeacon/Android-SDK/Decuments/)
+ - [Current JavaDoc documentation](https://github.com/BrightBeacon/Android-SDK/Documents/)
  - [Bright Community Portal](http://brtbeacon.com)
 
 **What is ranging?**
