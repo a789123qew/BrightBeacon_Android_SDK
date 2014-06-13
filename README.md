@@ -43,7 +43,7 @@ Demos include samples for ranging beacons, monitoring beacons, calculating dista
 
 Quick start with ranging:
 
-private static final String BRIGHT_PROXIMITY_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"; private static final Region ALL_BRIGHT_BEACONS = new Region("regionId", BRIGHT_PROXIMITY_UUID, null, null);
+private static final String BRIGHT_PROXIMITY_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D"; private static final BRTRegion ALL_BRIGHT_BEACONS = new BRTRegion("regionId", BRIGHT_PROXIMITY_UUID, null, null);
 
 private BRTBeaconManager beaconManager = new BRTBeaconManager(context);
 
