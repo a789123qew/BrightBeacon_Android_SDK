@@ -136,7 +136,12 @@ public class DistanceBeaconActivity extends Activity {
 		beaconManager.connect(new ServiceReadyCallback() {
 			@Override
 			public void onServiceReady() {
-				beaconManager.startRanging(region);
+				try {
+					beaconManager.startRanging(region);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}

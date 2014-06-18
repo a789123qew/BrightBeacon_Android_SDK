@@ -134,7 +134,12 @@ public class ListBeaconsActivity extends Activity {
 	
 	@Override
 	protected void onStop() {
-		beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
+		try {
+			beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		super.onStop();
 	}
@@ -159,7 +164,12 @@ public class ListBeaconsActivity extends Activity {
 		beaconManager.connect(new ServiceReadyCallback() {
 			@Override
 			public void onServiceReady() {
-				beaconManager.startRanging(ALL_BRIGHT_BEACONS_REGION);
+				try {
+					beaconManager.startRanging(ALL_BRIGHT_BEACONS_REGION);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}

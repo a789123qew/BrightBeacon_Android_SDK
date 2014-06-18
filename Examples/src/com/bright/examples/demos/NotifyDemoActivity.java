@@ -94,7 +94,12 @@ public class NotifyDemoActivity extends Activity {
 			@Override
 			public void onServiceReady() {
 				
-				beaconManager.startMonitoring(region);
+				try {
+					beaconManager.startMonitoring(region);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 		});
