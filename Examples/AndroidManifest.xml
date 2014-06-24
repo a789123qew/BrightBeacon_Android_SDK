@@ -11,7 +11,10 @@
     <!-- Needed permissions in order to scan for beacons. -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
+    <!-- Needed permissions in order to summit for beacons. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>  
     <!-- Declaration that this app is usable on phones with Bluetooth Low Energy. -->
     <uses-feature
         android:name="android.hardware.bluetooth_le"
@@ -55,7 +58,8 @@
         <!-- key  for connection beacons. -->
         <meta-data
             android:name="BRTBEACON_APPKEY"
-            android:value="e2c56db5-dffb-48d2-b060-d0f5a71096e0" /> <!-- </>值来自开发者平台取得的AppKey -->
+            android:value="e2c56db5dffb48d2b060d0f5a71096e0" />
+        <!-- </>值来自开发者平台取得的AppKey -->
     </application>
 
 </manifest>

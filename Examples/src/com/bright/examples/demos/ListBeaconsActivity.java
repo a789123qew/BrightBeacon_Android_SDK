@@ -30,46 +30,47 @@ import com.brtbeacon.sdk.utils.L;
  * @author
  */
 public class ListBeaconsActivity extends Activity {
-	
+
 	private static final String		TAG							= ListBeaconsActivity.class
 																		.getSimpleName();
-	
+
 	public static final String		EXTRAS_TARGET_ACTIVITY		= "extrasTargetActivity";
 	public static final String		EXTRAS_BEACON				= "extrasBeacon";
-	
+
 	private static final int		REQUEST_ENABLE_BT			= 1234;
-	
+
 	private static final BRTRegion	ALL_BRIGHT_BEACONS_REGION	= new BRTRegion(
 																		"rid",
 																		null,
 																		null,
 																		null);
 	private static final String		BRIGHT_PROXIMITY_UUID		= "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
-	
+
 	private BRTBeaconManager		beaconManager;
 	private LeDeviceListAdapter		adapter;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		
+
 		// Configure device list.
 		adapter = new LeDeviceListAdapter(this);
 		ListView list = (ListView) findViewById(R.id.device_list);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(createOnItemClickListener());
-		
+
 		// Configure verbose debug logging.
 		L.enableDebugLogging(true);
-		
+
 		// Configure BeaconManager.
 		beaconManager = new BRTBeaconManager(this);
 		beaconManager.setRangingListener(new RangingListener() {
-			
+
 			@Override
-			public void onBeaconsDiscovered(BRTRegion arg0, final List<BRTBeacon> beacons) {
+			public void onBeaconsDiscovered(BRTRegion arg0,
+					final List<BRTBeacon> beacons) {
 				// TODO Auto-generated method stub
 				// Note that results are not delivered on UI thread.
 				runOnUiThread(new Runnable() {
@@ -83,10 +84,10 @@ public class ListBeaconsActivity extends Activity {
 					}
 				});
 			}
-			
+
 		});
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.scan_menu, menu);
@@ -94,7 +95,7 @@ public class ListBeaconsActivity extends Activity {
 		refreshItem.setActionView(R.layout.actionbar_indeterminate_progress);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
@@ -103,25 +104,25 @@ public class ListBeaconsActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		beaconManager.disconnect();
-		
+
 		super.onDestroy();
 	}
-	
+
 	@Override
 	protected void onStart() {
 		super.onStart();
-		
+
 		// Check if device supports Bluetooth Low Energy.
 		if (!beaconManager.hasBluetooth()) {
 			Toast.makeText(this, "Device does not have Bluetooth Low Energy",
 					Toast.LENGTH_LONG).show();
 			return;
 		}
-		
+
 		// If Bluetooth is not enabled, let user enable it.
 		if (!beaconManager.isBluetoothEnabled()) {
 			Intent enableBtIntent = new Intent(
@@ -131,7 +132,7 @@ public class ListBeaconsActivity extends Activity {
 			connectToService();
 		}
 	}
-	
+
 	@Override
 	protected void onStop() {
 		try {
@@ -140,10 +141,10 @@ public class ListBeaconsActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		super.onStop();
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == REQUEST_ENABLE_BT) {
@@ -157,7 +158,7 @@ public class ListBeaconsActivity extends Activity {
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
+
 	private void connectToService() {
 		getActionBar().setSubtitle("Scanning...");
 		adapter.replaceWith(Collections.<BRTBeacon> emptyList());
@@ -173,7 +174,7 @@ public class ListBeaconsActivity extends Activity {
 			}
 		});
 	}
-	
+
 	private AdapterView.OnItemClickListener createOnItemClickListener() {
 		return new AdapterView.OnItemClickListener() {
 			@Override
@@ -195,5 +196,5 @@ public class ListBeaconsActivity extends Activity {
 			}
 		};
 	}
-	
+
 }

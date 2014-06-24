@@ -11,13 +11,13 @@ import android.view.View;
  * @author
  */
 public class AllDemosActivity extends Activity {
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.all_demos);
-		
+
 		findViewById(R.id.distance_demo_button).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
@@ -55,5 +55,5 @@ public class AllDemosActivity extends Activity {
 					}
 				});
 	}
-	
+
 }

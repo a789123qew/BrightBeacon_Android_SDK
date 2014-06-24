@@ -19,43 +19,43 @@ import com.brtbeacon.sdk.Utils;
  * @author
  */
 public class LeDeviceListAdapter extends BaseAdapter {
-	
+
 	private ArrayList<BRTBeacon>	beacons;
 	private LayoutInflater			inflater;
-	
+
 	public LeDeviceListAdapter(Context context) {
 		this.inflater = LayoutInflater.from(context);
 		this.beacons = new ArrayList<BRTBeacon>();
 	}
-	
+
 	public void replaceWith(Collection<BRTBeacon> newBeacons) {
 		this.beacons.clear();
 		this.beacons.addAll(newBeacons);
 		notifyDataSetChanged();
 	}
-	
+
 	@Override
 	public int getCount() {
 		return beacons.size();
 	}
-	
+
 	@Override
 	public BRTBeacon getItem(int position) {
 		return beacons.get(position);
 	}
-	
+
 	@Override
 	public long getItemId(int position) {
 		return position;
 	}
-	
+
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		view = inflateIfRequired(view, position, parent);
 		bind(getItem(position), view);
 		return view;
 	}
-	
+
 	private void bind(BRTBeacon beacon, View view) {
 		ViewHolder holder = (ViewHolder) view.getTag();
 		holder.macTextView.setText(String.format(
@@ -68,7 +68,7 @@ public class LeDeviceListAdapter extends BaseAdapter {
 				+ beacon.getMeasuredPower());
 		holder.rssiTextView.setText("RSSI: " + beacon.getRssi());
 	}
-	
+
 	private View inflateIfRequired(View view, int position, ViewGroup parent) {
 		if (view == null) {
 			view = inflater.inflate(R.layout.device_item, null);
@@ -76,14 +76,14 @@ public class LeDeviceListAdapter extends BaseAdapter {
 		}
 		return view;
 	}
-	
+
 	static class ViewHolder {
 		final TextView	macTextView;
 		final TextView	majorTextView;
 		final TextView	minorTextView;
 		final TextView	measuredPowerTextView;
 		final TextView	rssiTextView;
-		
+
 		ViewHolder(View view) {
 			macTextView = (TextView) view.findViewWithTag("mac");
 			majorTextView = (TextView) view.findViewWithTag("major");

@@ -31,51 +31,51 @@ import com.brtbeacon.sdk.ServiceReadyCallback;
  * @author
  */
 public class NotifyDemoActivity extends Activity {
-	
+
 	private static final String	TAG				= NotifyDemoActivity.class
 														.getSimpleName();
 	private static final int	NOTIFICATION_ID	= 123;
-	
+
 	private BRTBeaconManager	beaconManager;
 	private NotificationManager	notificationManager;
 	private BRTRegion			region;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.notify_demo);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		
+
 		BRTBeacon beacon = getIntent().getParcelableExtra(
 				ListBeaconsActivity.EXTRAS_BEACON);
 		region = new BRTRegion("regionId", beacon.getProximityUUID(),
 				beacon.getMajor(), beacon.getMinor());
 		notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		beaconManager = new BRTBeaconManager(this);
-		
+
 		// Default values are 5s of scanning and 25s of waiting time to save CPU
 		// cycles.
 		// In order for this demo to be more responsive and immediate we lower
 		// down those values.
 		beaconManager.setBackgroundScanPeriod(TimeUnit.SECONDS.toMillis(1), 0);
-		
+
 		beaconManager.setMonitoringListener(new MonitoringListener() {
-			
+
 			@Override
-			public void onEnteredRegion(BRTRegion arg0, List<BRTBeacon>  arg1) {
+			public void onEnteredRegion(BRTRegion arg0, List<BRTBeacon> arg1) {
 				// TODO Auto-generated method stub
 				postNotification("Entered region");
 			}
-			
+
 			@Override
 			public void onExitedRegion(BRTRegion arg0) {
 				// TODO Auto-generated method stub
 				postNotification("Exited region");
 			}
-			
+
 		});
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
@@ -84,34 +84,34 @@ public class NotifyDemoActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+
 		notificationManager.cancel(NOTIFICATION_ID);
 		beaconManager.connect(new ServiceReadyCallback() {
 			@Override
 			public void onServiceReady() {
-				
+
 				try {
 					beaconManager.startMonitoring(region);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
 			}
 		});
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		notificationManager.cancel(NOTIFICATION_ID);
 		beaconManager.disconnect();
 		super.onDestroy();
 	}
-	
+
 	private void postNotification(String msg) {
 		Intent notifyIntent = new Intent(NotifyDemoActivity.this,
 				NotifyDemoActivity.class);
@@ -126,7 +126,7 @@ public class NotifyDemoActivity extends Activity {
 		notification.defaults |= Notification.DEFAULT_SOUND;
 		notification.defaults |= Notification.DEFAULT_LIGHTS;
 		notificationManager.notify(NOTIFICATION_ID, notification);
-		
+
 		TextView statusTextView = (TextView) findViewById(R.id.status);
 		statusTextView.setText(msg);
 	}
