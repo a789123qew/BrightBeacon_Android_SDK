@@ -100,4 +100,4 @@ Quick start with ranging:
   beaconManager.disconnect();
 ```
 
-## FAQ ##
+
