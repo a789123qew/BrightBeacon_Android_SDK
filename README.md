@@ -12,7 +12,7 @@ It allows for:
 - beacon characteristic reading and writing (proximity UUID, major & minor values, broadcasting power, advertising interval), see [BeaconConnection] (https://github.com/BrightBeacon/Android-SDK/tree/master/Documents/com/brtbeacon/sdk/connection/BeaconConnection.html) class and [demos](https://github.com/BrightBeacon/Android-SDK/tree/master/Examples) in the SDK
 
 Docs: 
- - [Current JavaDoc documentation](https://github.com/BrightBeacon/Android-SDK/tree/master/Documents)
+ - [Current JavaDoc documentation](http://brightbeacon.github.io/BrightBeacon_Android_SDK)
  - [Bright Community Portal](http://www.brtbeacon.com)
 
 **What is ranging?**
