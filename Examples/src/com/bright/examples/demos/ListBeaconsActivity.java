@@ -21,6 +21,7 @@ import com.brtbeacon.sdk.BRTBeaconManager;
 import com.brtbeacon.sdk.BRTRegion;
 import com.brtbeacon.sdk.RangingListener;
 import com.brtbeacon.sdk.ServiceReadyCallback;
+import com.brtbeacon.sdk.service.RangingResult;
 import com.brtbeacon.sdk.utils.L;
 
 /**
@@ -44,7 +45,7 @@ public class ListBeaconsActivity extends Activity {
 																		null,
 																		null,
 																		null);
-	private static final String		BRIGHT_PROXIMITY_UUID		= "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+	//private static final String		BRIGHT_PROXIMITY_UUID		= "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
 
 	private BRTBeaconManager		beaconManager;
 	private LeDeviceListAdapter		adapter;
@@ -69,8 +70,7 @@ public class ListBeaconsActivity extends Activity {
 		beaconManager.setRangingListener(new RangingListener() {
 
 			@Override
-			public void onBeaconsDiscovered(BRTRegion arg0,
-					final List<BRTBeacon> beacons) {
+			public void onBeaconsDiscovered(final RangingResult rangingResult) {
 				// TODO Auto-generated method stub
 				// Note that results are not delivered on UI thread.
 				runOnUiThread(new Runnable() {
@@ -79,8 +79,8 @@ public class ListBeaconsActivity extends Activity {
 						// Just in case if there are multiple beacons
 						// with the same uuid, major, minor.
 						getActionBar().setSubtitle(
-								"Found beacons: " + beacons.size());
-						adapter.replaceWith(beacons);
+								"Found beacons: " + rangingResult.sortbeacons.size());
+						adapter.replaceWith(rangingResult.sortbeacons);
 					}
 				});
 			}

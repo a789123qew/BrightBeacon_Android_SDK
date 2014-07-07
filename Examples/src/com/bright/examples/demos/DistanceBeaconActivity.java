@@ -17,6 +17,7 @@ import com.brtbeacon.sdk.BRTRegion;
 import com.brtbeacon.sdk.RangingListener;
 import com.brtbeacon.sdk.ServiceReadyCallback;
 import com.brtbeacon.sdk.Utils;
+import com.brtbeacon.sdk.service.RangingResult;
 
 /**
  * Visualizes distance from beacon to the device.
@@ -62,8 +63,7 @@ public class DistanceBeaconActivity extends Activity {
 		beaconManager.setRangingListener(new RangingListener() {
 
 			@Override
-			public void onBeaconsDiscovered(BRTRegion arg0,
-					final List<BRTBeacon> rangedBeacons) {
+			public void onBeaconsDiscovered(final RangingResult rangingResult) {
 				// TODO Auto-generated method stub
 				// Note that results are not delivered on UI thread.
 				runOnUiThread(new Runnable() {
@@ -72,7 +72,7 @@ public class DistanceBeaconActivity extends Activity {
 						// Just in case if there are multiple beacons
 						// with the same uuid, major, minor.
 						BRTBeacon foundBeacon = null;
-						for (BRTBeacon rangedBeacon : (List<BRTBeacon>) rangedBeacons) {
+						for (BRTBeacon rangedBeacon : (List<BRTBeacon>) rangingResult.sortbeacons) {
 							if (rangedBeacon.getMacAddress().equals(
 									beacon.getMacAddress())) {
 								foundBeacon = rangedBeacon;
