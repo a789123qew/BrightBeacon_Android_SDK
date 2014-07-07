@@ -73,8 +73,8 @@ Quick start with ranging:
 
   // Should be invoked in #onCreate.
   beaconManager.setRangingListener(new RangingListener() {
-    @Override public void onBeaconsDiscovered(BRTRegion region, List<BRTBeacon> beacons) {
-      Log.d(TAG, "Ranged beacons: " + beacons);
+    @Override public void onBeaconsDiscovered(RangingResult rangingResult) {
+      Log.d(TAG, "Ranged beacons: " + rangingResult.beacons);
     }
   });
 
