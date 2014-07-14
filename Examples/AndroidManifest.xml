@@ -58,7 +58,7 @@
         <!-- key  for connection beacons. -->
         <meta-data
             android:name="BRTBEACON_APPKEY"
-            android:value="e2c56db5dffb48d2b060d0f5a71096e0" />
+            android:value="e71e63ce42a40f3d43b3e47c64344075" />
         <!-- </>值来自开发者平台取得的AppKey -->
     </application>
 
