@@ -79,8 +79,8 @@ public class ListBeaconsActivity extends Activity {
 						// Just in case if there are multiple beacons
 						// with the same uuid, major, minor.
 						getActionBar().setSubtitle(
-								"Found beacons: " + rangingResult.beacons.size());
-						adapter.replaceWith(rangingResult.beacons);
+								"Found beacons: " + rangingResult.sortbeacons.size());
+						adapter.replaceWith(rangingResult.sortbeacons);
 					}
 				});
 			}

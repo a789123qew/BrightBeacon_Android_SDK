@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.brtbeacon.sdk.BRTBeacon;
 import com.brtbeacon.sdk.BRTBeaconPower;
+import com.brtbeacon.sdk.ConfigBeacon;
 import com.brtbeacon.sdk.connection.BeaconCharacteristics;
 import com.brtbeacon.sdk.connection.BeaconConnection;
 import com.brtbeacon.sdk.connection.ConnectionCallback;
@@ -118,6 +119,7 @@ public class CharacteristicsDemoActivity extends Activity {
 		return new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+
 				connection.setDefault(new WriteCallback() {
 
 					@Override
@@ -140,6 +142,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						});
 					}
 				});
+
 			}
 
 		};
@@ -325,7 +328,7 @@ public class CharacteristicsDemoActivity extends Activity {
 
 	private void updatePower(int power) {
 
-		connection.writeMeasured(power,
+		connection.writeMeasuredPower(power,
 				new com.brtbeacon.sdk.connection.WriteCallback() {
 					@Override
 					public void onSuccess() {
@@ -467,7 +470,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						statusView.setText("Status: Connected to beacon");
 						StringBuilder sb = new StringBuilder()
 								.append("Name: ")
-								.append(new String(beaconChars.getName()))
+								.append(beaconChars.getName())
 								.append("\n")
 								.append("UUID: ")
 								.append(beaconChars.getUUID())
@@ -479,7 +482,7 @@ public class CharacteristicsDemoActivity extends Activity {
 								.append(beaconChars.getMinor())
 								.append("\n")
 								.append("Measured Power: ")
-								.append(beaconChars.getMeasured())
+								.append(beaconChars.getMeasuredPower())
 								.append("\n")
 								.append("TX: ")
 								.append(beaconChars.getTX())
@@ -502,7 +505,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						intervalEditView.setText(String.valueOf(beaconChars
 								.getAdvertisingIntervalMillis()));
 						powerEditView.setText(String.valueOf(beaconChars
-								.getMeasured()));
+								.getMeasuredPower()));
 						txTextView.setText(String.valueOf(beaconChars.getTX()));
 						nameEditView.setText(new String(beaconChars.getName()));
 						afterConnectedView.setVisibility(View.VISIBLE);

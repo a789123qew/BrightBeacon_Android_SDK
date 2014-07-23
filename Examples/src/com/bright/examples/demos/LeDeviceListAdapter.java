@@ -59,14 +59,14 @@ public class LeDeviceListAdapter extends BaseAdapter {
 	private void bind(BRTBeacon beacon, View view) {
 		ViewHolder holder = (ViewHolder) view.getTag();
 		holder.macTextView.setText(String.format(
-				"NAME: %s \nMAC: %s \nDistance:%.2f米 \nUUID: %s",
+				"Name: %s \nMAC: %s \nDistance:%.2f米 \nUUID: %s",
 				beacon.getName(), beacon.getMacAddress(),
 				Utils.computeAccuracy(beacon), beacon.getProximityUUID()));
 		holder.majorTextView.setText("Major: " + beacon.getMajor());
 		holder.minorTextView.setText("Minor: " + beacon.getMinor());
 		holder.measuredPowerTextView.setText("MPower: "
 				+ beacon.getMeasuredPower());
-		holder.rssiTextView.setText("RSSI: " + beacon.getRssi());
+		holder.rssiTextView.setText("Rssi: " + beacon.getRssi());
 	}
 
 	private View inflateIfRequired(View view, int position, ViewGroup parent) {

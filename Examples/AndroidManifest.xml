@@ -14,18 +14,18 @@
     <!-- Needed permissions in order to summit for beacons. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>  
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- Declaration that this app is usable on phones with Bluetooth Low Energy. -->
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="false" />
 
     <application
-        android:label="Bright Demos"
+        android:label="BrightBeaconDemo"
         android:theme="@android:style/Theme.Holo.Light" >
         <activity
             android:name="com.bright.examples.demos.AllDemosActivity"
-            android:label="Bright Demos"
+            android:label="BrightBeaconDemo"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
