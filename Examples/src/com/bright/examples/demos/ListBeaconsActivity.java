@@ -143,10 +143,9 @@ public class ListBeaconsActivity extends Activity {
 		// // TODO Auto-generated catch block
 		// e.printStackTrace();
 		// }
-
+		beaconManager.disconnect();
 		super.onStop();
 	}
-
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == REQUEST_ENABLE_BT) {
@@ -184,6 +183,7 @@ public class ListBeaconsActivity extends Activity {
 					int position, long id) {
 				try {
 					beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
+					
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

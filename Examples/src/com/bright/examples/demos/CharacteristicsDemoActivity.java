@@ -142,7 +142,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						});
 					}
 				});
-				//setCharacteristics();
+				// setCharacteristics();
 			}
 
 		};
