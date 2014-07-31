@@ -45,7 +45,8 @@ public class ListBeaconsActivity extends Activity {
 																		null,
 																		null,
 																		null);
-	//private static final String		BRIGHT_PROXIMITY_UUID		= "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+	// private static final String BRIGHT_PROXIMITY_UUID =
+	// "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
 
 	private BRTBeaconManager		beaconManager;
 	private LeDeviceListAdapter		adapter;
@@ -79,7 +80,8 @@ public class ListBeaconsActivity extends Activity {
 						// Just in case if there are multiple beacons
 						// with the same uuid, major, minor.
 						getActionBar().setSubtitle(
-								"Found beacons: " + rangingResult.sortbeacons.size());
+								"Found beacons: "
+										+ rangingResult.sortbeacons.size());
 						adapter.replaceWith(rangingResult.sortbeacons);
 					}
 				});
@@ -135,12 +137,12 @@ public class ListBeaconsActivity extends Activity {
 
 	@Override
 	protected void onStop() {
-		try {
-			beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// try {
+		// beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
+		// } catch (RemoteException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 		super.onStop();
 	}
@@ -180,6 +182,13 @@ public class ListBeaconsActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				try {
+					beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				if (getIntent().getStringExtra(EXTRAS_TARGET_ACTIVITY) != null) {
 					try {
 						Class<?> clazz = Class.forName(getIntent()

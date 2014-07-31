@@ -101,8 +101,8 @@ public class CharacteristicsDemoActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
-		connection.close();
 		super.onDestroy();
+		connection.close();
 	}
 
 	@Override
@@ -142,11 +142,50 @@ public class CharacteristicsDemoActivity extends Activity {
 						});
 					}
 				});
-
+				//setCharacteristics();
 			}
 
 		};
 
+	}
+
+	/**
+	 * 配置beacon
+	 */
+	private void setCharacteristics() {
+		ConfigBeacon configBeacon = new ConfigBeacon();
+		configBeacon.setMajor(0);
+		configBeacon.setMinor(0);
+		configBeacon.setIntervalMillis(350);
+		configBeacon.setLed(1);
+		configBeacon.setTxPower(BRTBeaconPower.BRTBeaconPowerLevelDefault);
+		configBeacon.setMeasuredPower(-59);
+		configBeacon.setName("BrightBeacon");
+		configBeacon.setUuid("e2c56db5-dffb-48d2-b060-d0f5a71096e0");
+		connection.setBeaconCharacteristic(configBeacon, new WriteCallback() {
+
+			@Override
+			public void onSuccess() {
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						showToast("reset successful");
+					}
+				});
+
+			}
+
+			@Override
+			public void onError() {
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						showToast("reset failed");
+					}
+				});
+
+			}
+		});
 	}
 
 	private View.OnClickListener createUpdatePowerButtonListener() {
@@ -354,7 +393,7 @@ public class CharacteristicsDemoActivity extends Activity {
 
 	private void updateDBM(com.brtbeacon.sdk.BRTBeaconPower dbm) {
 
-		connection.writeTX(dbm,
+		connection.writeTXPower(dbm,
 				new com.brtbeacon.sdk.connection.WriteCallback() {
 					@Override
 					public void onSuccess() {
