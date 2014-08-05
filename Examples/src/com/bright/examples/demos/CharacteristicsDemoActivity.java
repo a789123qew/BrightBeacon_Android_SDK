@@ -2,6 +2,7 @@ package com.bright.examples.demos;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -95,7 +96,15 @@ public class CharacteristicsDemoActivity extends Activity {
 		super.onResume();
 		if (!connection.isConnected()) {
 			statusView.setText("Status: Connecting...");
-			connection.authenticate();
+			
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					connection.authenticate();
+				}
+			}, 3000);
+
 		}
 	}
 
@@ -505,7 +514,6 @@ public class CharacteristicsDemoActivity extends Activity {
 
 					@Override
 					public void run() {
-
 						statusView.setText("Status: Connected to beacon");
 						StringBuilder sb = new StringBuilder()
 								.append("Name: ")
@@ -569,6 +577,17 @@ public class CharacteristicsDemoActivity extends Activity {
 					@Override
 					public void run() {
 						statusView.setText("Status: Disconnected from beacon");
+					}
+				});
+			}
+
+			@Override
+			public void onServicesDiscoveredError() {
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						statusView
+								.setText("Status: Could not discover services");
 					}
 				});
 			}

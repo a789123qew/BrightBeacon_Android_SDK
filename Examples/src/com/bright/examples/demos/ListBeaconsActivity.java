@@ -1,7 +1,6 @@
 package com.bright.examples.demos;
 
 import java.util.Collections;
-import java.util.List;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -68,6 +67,7 @@ public class ListBeaconsActivity extends Activity {
 
 		// Configure BeaconManager.
 		beaconManager = new BRTBeaconManager(this);
+		beaconManager.setForegroundScanPeriod(1, 0);
 		beaconManager.setRangingListener(new RangingListener() {
 
 			@Override
@@ -81,7 +81,7 @@ public class ListBeaconsActivity extends Activity {
 						// with the same uuid, major, minor.
 						getActionBar().setSubtitle(
 								"Found beacons: "
-										+ rangingResult.sortbeacons.size());
+										+ rangingResult.beacons.size());
 						adapter.replaceWith(rangingResult.sortbeacons);
 					}
 				});
@@ -110,7 +110,6 @@ public class ListBeaconsActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		beaconManager.disconnect();
-
 		super.onDestroy();
 	}
 
@@ -137,15 +136,16 @@ public class ListBeaconsActivity extends Activity {
 
 	@Override
 	protected void onStop() {
-		// try {
-		// beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
-		// } catch (RemoteException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+//		try {
+//			beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		beaconManager.disconnect();
 		super.onStop();
 	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == REQUEST_ENABLE_BT) {
@@ -183,12 +183,10 @@ public class ListBeaconsActivity extends Activity {
 					int position, long id) {
 				try {
 					beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
-					
-				} catch (RemoteException e) {
+				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e1.printStackTrace();
 				}
-
 				if (getIntent().getStringExtra(EXTRAS_TARGET_ACTIVITY) != null) {
 					try {
 						Class<?> clazz = Class.forName(getIntent()
