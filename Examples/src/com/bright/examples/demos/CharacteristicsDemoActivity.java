@@ -129,29 +129,29 @@ public class CharacteristicsDemoActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				connection.setDefault(new WriteCallback() {
-
-					@Override
-					public void onSuccess() {
-						runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								showToast("setdefault successful!");
-							}
-						});
-					}
-
-					@Override
-					public void onError() {
-						runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								showToast("setdefault failed!");
-							}
-						});
-					}
-				});
-				// setCharacteristics();
+//				connection.setDefault(new WriteCallback() {
+//
+//					@Override
+//					public void onSuccess() {
+//						runOnUiThread(new Runnable() {
+//							@Override
+//							public void run() {
+//								showToast("setdefault successful!");
+//							}
+//						});
+//					}
+//
+//					@Override
+//					public void onError() {
+//						runOnUiThread(new Runnable() {
+//							@Override
+//							public void run() {
+//								showToast("setdefault failed!");
+//							}
+//						});
+//					}
+//				});
+				 setCharacteristics();
 			}
 
 		};

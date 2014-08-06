@@ -43,7 +43,7 @@ Monitoring is designed to perform periodic scans in the background. By default i
 
 ## Installation ##
 
-1. Copy [brightbeacon-sdk-1.0.7.jar](https://github.com/BrightBeacon/BrightBeacon_Android_SDK/blob/master/BrightSDK/brightbeacon-sdk-1.0.7.jar) to your `libs` directory.
+1. Copy [brightbeacon-sdk-1.0.8.jar](https://github.com/BrightBeacon/BrightBeacon_Android_SDK/blob/master/BrightSDK/brightbeacon-sdk-1.0.8.jar) to your `libs` directory.
 2. Add following permissions and service declaration to your `AndroidManifest.xml`:
 
 ```xml

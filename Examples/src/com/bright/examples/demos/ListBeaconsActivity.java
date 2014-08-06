@@ -67,7 +67,6 @@ public class ListBeaconsActivity extends Activity {
 
 		// Configure BeaconManager.
 		beaconManager = new BRTBeaconManager(this);
-		beaconManager.setForegroundScanPeriod(1, 0);
 		beaconManager.setRangingListener(new RangingListener() {
 
 			@Override
@@ -136,13 +135,13 @@ public class ListBeaconsActivity extends Activity {
 
 	@Override
 	protected void onStop() {
-//		try {
-//			beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
-//		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		beaconManager.disconnect();
+		try {
+			beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// beaconManager.disconnect();
 		super.onStop();
 	}
 
@@ -181,12 +180,7 @@ public class ListBeaconsActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				try {
-					beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+
 				if (getIntent().getStringExtra(EXTRAS_TARGET_ACTIVITY) != null) {
 					try {
 						Class<?> clazz = Class.forName(getIntent()
