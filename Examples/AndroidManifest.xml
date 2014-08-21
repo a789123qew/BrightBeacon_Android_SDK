@@ -29,11 +29,13 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DeviceControlActivity" />
+        <activity
+            android:name="com.bright.examples.demos.ConfigDemoActivity"
+            android:label="Select Beacon"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.bright.examples.demos.ListBeaconsActivity"
             android:label="Select Beacon"
@@ -50,16 +52,14 @@
             android:name="com.bright.examples.demos.CharacteristicsDemoActivity"
             android:label="Characteristics Demo"
             android:screenOrientation="portrait" />
-
         <!-- Bright service responsible for scanning beacons. -->
         <service
             android:name="com.brtbeacon.sdk.service.BRTBeaconService"
             android:exported="false" />
-        <!-- key  for connection beacons. -->
+        <!-- </>值来自开发者平台取得的AppKey -->
         <meta-data
             android:name="BRTBEACON_APPKEY"
-            android:value="e71e63ce42a40f3d43b3e47c64344075" />
-        <!-- </>值来自开发者平台取得的AppKey -->
+            android:value="e71e63ce42a40f3d43b3e47c64344076" />
     </application>
 
 </manifest>

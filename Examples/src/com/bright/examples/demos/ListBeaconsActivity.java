@@ -38,15 +38,21 @@ public class ListBeaconsActivity extends Activity {
 	public static final String		EXTRAS_BEACON				= "extrasBeacon";
 
 	private static final int		REQUEST_ENABLE_BT			= 1234;
-
+	/**
+	 * 用于标识扫描指定uuid的设备 uuid为null 表示扫描所有
+	 */
 	private static final BRTRegion	ALL_BRIGHT_BEACONS_REGION	= new BRTRegion(
 																		"rid",
 																		null,
 																		null,
 																		null);
-	// private static final String BRIGHT_PROXIMITY_UUID =
-	// "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
 
+	private static final String		BRIGHT_PROXIMITY_UUID		= "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+	private static final BRTRegion	BRIGHT_BEACONS_REGION		= new BRTRegion(
+																		"rid",
+																		BRIGHT_PROXIMITY_UUID,
+																		null,
+																		null);
 	private BRTBeaconManager		beaconManager;
 	private LeDeviceListAdapter		adapter;
 
@@ -56,32 +62,30 @@ public class ListBeaconsActivity extends Activity {
 		setContentView(R.layout.main);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		// Configure device list.
 		adapter = new LeDeviceListAdapter(this);
 		ListView list = (ListView) findViewById(R.id.device_list);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(createOnItemClickListener());
 
-		// Configure verbose debug logging.
 		L.enableDebugLogging(true);
 
-		// Configure BeaconManager.
+		// 创建BRTBeaconManager对象
 		beaconManager = new BRTBeaconManager(this);
+		//回调扫描结果
 		beaconManager.setRangingListener(new RangingListener() {
 
 			@Override
 			public void onBeaconsDiscovered(final RangingResult rangingResult) {
-				// TODO Auto-generated method stub
+
 				// Note that results are not delivered on UI thread.
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						// Just in case if there are multiple beacons
-						// with the same uuid, major, minor.
+
 						getActionBar().setSubtitle(
 								"Found beacons: "
 										+ rangingResult.beacons.size());
-						adapter.replaceWith(rangingResult.sortbeacons);
+						adapter.replaceWith(rangingResult.sortBeacons);
 					}
 				});
 			}
@@ -108,6 +112,7 @@ public class ListBeaconsActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
+		// 关闭扫描服务
 		beaconManager.disconnect();
 		super.onDestroy();
 	}
@@ -116,14 +121,14 @@ public class ListBeaconsActivity extends Activity {
 	protected void onStart() {
 		super.onStart();
 
-		// Check if device supports Bluetooth Low Energy.
+		// 检查是否支持蓝牙低功耗
 		if (!beaconManager.hasBluetooth()) {
 			Toast.makeText(this, "Device does not have Bluetooth Low Energy",
 					Toast.LENGTH_LONG).show();
 			return;
 		}
 
-		// If Bluetooth is not enabled, let user enable it.
+		// 如果未打开蓝牙，则请求打开蓝牙。
 		if (!beaconManager.isBluetoothEnabled()) {
 			Intent enableBtIntent = new Intent(
 					BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -136,12 +141,13 @@ public class ListBeaconsActivity extends Activity {
 	@Override
 	protected void onStop() {
 		try {
+			// 停止扫描
 			beaconManager.stopRanging(ALL_BRIGHT_BEACONS_REGION);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// beaconManager.disconnect();
+		// 关闭扫描服务
+		beaconManager.disconnect();
 		super.onStop();
 	}
 
@@ -162,13 +168,14 @@ public class ListBeaconsActivity extends Activity {
 	private void connectToService() {
 		getActionBar().setSubtitle("Scanning...");
 		adapter.replaceWith(Collections.<BRTBeacon> emptyList());
+		// 扫描之前先建立扫描服务
 		beaconManager.connect(new ServiceReadyCallback() {
 			@Override
 			public void onServiceReady() {
 				try {
+					// 开始扫描
 					beaconManager.startRanging(ALL_BRIGHT_BEACONS_REGION);
 				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

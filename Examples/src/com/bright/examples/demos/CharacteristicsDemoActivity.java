@@ -14,19 +14,17 @@ import com.brtbeacon.sdk.BRTBeacon;
 import com.brtbeacon.sdk.BRTBeaconPower;
 import com.brtbeacon.sdk.ConfigBeacon;
 import com.brtbeacon.sdk.connection.BeaconCharacteristics;
-import com.brtbeacon.sdk.connection.BeaconConnection;
+import com.brtbeacon.sdk.connection.BRTBeaconConnection;
 import com.brtbeacon.sdk.connection.ConnectionCallback;
 import com.brtbeacon.sdk.connection.WriteCallback;
 
 /**
- * connection beacon and update values.
- * 
- * @author
+ * 演示连接Beacon，读写相关特征
  */
 public class CharacteristicsDemoActivity extends Activity {
 
 	private BRTBeacon			beacon;
-	private BeaconConnection	connection;
+	private BRTBeaconConnection	connection;
 	private TextView			statusView;
 	private TextView			beaconDetailsView;
 	private EditText			intervalEditView;
@@ -46,7 +44,7 @@ public class CharacteristicsDemoActivity extends Activity {
 		beacon = getIntent().getParcelableExtra(
 				ListBeaconsActivity.EXTRAS_BEACON);
 		init();
-		connection = new BeaconConnection(this, beacon,
+		connection = new BRTBeaconConnection(this, beacon,
 				createConnectionCallback());
 	}
 
@@ -96,7 +94,7 @@ public class CharacteristicsDemoActivity extends Activity {
 		super.onResume();
 		if (!connection.isConnected()) {
 			statusView.setText("Status: Connecting...");
-			
+
 			new Handler().postDelayed(new Runnable() {
 
 				@Override
@@ -129,29 +127,29 @@ public class CharacteristicsDemoActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-//				connection.setDefault(new WriteCallback() {
-//
-//					@Override
-//					public void onSuccess() {
-//						runOnUiThread(new Runnable() {
-//							@Override
-//							public void run() {
-//								showToast("setdefault successful!");
-//							}
-//						});
-//					}
-//
-//					@Override
-//					public void onError() {
-//						runOnUiThread(new Runnable() {
-//							@Override
-//							public void run() {
-//								showToast("setdefault failed!");
-//							}
-//						});
-//					}
-//				});
-				 setCharacteristics();
+				// connection.setDefault(new WriteCallback() {
+				//
+				// @Override
+				// public void onSuccess() {
+				// runOnUiThread(new Runnable() {
+				// @Override
+				// public void run() {
+				// showToast("setdefault successful!");
+				// }
+				// });
+				// }
+				//
+				// @Override
+				// public void onError() {
+				// runOnUiThread(new Runnable() {
+				// @Override
+				// public void run() {
+				// showToast("setdefault failed!");
+				// }
+				// });
+				// }
+				// });
+				setCharacteristics();
 			}
 
 		};
@@ -539,8 +537,9 @@ public class CharacteristicsDemoActivity extends Activity {
 								.append("\n")
 								.append("AdvertisingIntervalMillis: ")
 								.append(beaconChars
-										.getAdvertisingIntervalMillis())
-								.append("\n");
+										.getAdvertisingIntervalMillis());
+						// .append("\n").append("Battery: ")
+						// .append(beaconChars.getBattery());
 
 						beaconDetailsView.setText(sb.toString());
 						majorEditView.setText(String.valueOf(beaconChars

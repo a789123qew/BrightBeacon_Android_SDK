@@ -14,9 +14,8 @@ import com.brtbeacon.sdk.BRTBeacon;
 import com.brtbeacon.sdk.Utils;
 
 /**
- * Displays basic information about beacon.
+ * 列表适配器
  * 
- * @author
  */
 public class LeDeviceListAdapter extends BaseAdapter {
 

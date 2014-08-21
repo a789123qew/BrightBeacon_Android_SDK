@@ -5,7 +5,6 @@ import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.RemoteException;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -20,15 +19,13 @@ import com.brtbeacon.sdk.Utils;
 import com.brtbeacon.sdk.service.RangingResult;
 
 /**
- * Visualizes distance from beacon to the device.
+ * 演示Beacon感应距离
  * 
- * @author
  */
 public class DistanceBeaconActivity extends Activity {
 
 	private static final String	TAG					= DistanceBeaconActivity.class
 															.getSimpleName();
-
 	// Y positions are relative to height of bg_distance image.
 	private static final double	RELATIVE_START_POS	= 320.0 / 1110.0;
 	private static final double	RELATIVE_STOP_POS	= 885.0 / 1110.0;
@@ -64,15 +61,14 @@ public class DistanceBeaconActivity extends Activity {
 
 			@Override
 			public void onBeaconsDiscovered(final RangingResult rangingResult) {
-				// TODO Auto-generated method stub
+
 				// Note that results are not delivered on UI thread.
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						// Just in case if there are multiple beacons
-						// with the same uuid, major, minor.
+
 						BRTBeacon foundBeacon = null;
-						for (BRTBeacon rangedBeacon : (List<BRTBeacon>) rangingResult.sortbeacons) {
+						for (BRTBeacon rangedBeacon : (List<BRTBeacon>) rangingResult.sortBeacons) {
 							if (rangedBeacon.getMacAddress().equals(
 									beacon.getMacAddress())) {
 								foundBeacon = rangedBeacon;
@@ -116,7 +112,7 @@ public class DistanceBeaconActivity extends Activity {
 	}
 
 	private int computeDotPosY(BRTBeacon beacon) {
-		// Let's put dot at the end of the scale when it's further than 6m.
+
 		double distance = Math.min(Utils.computeAccuracy(beacon), 6.0);
 		return startY + (int) (segmentLength * (distance / 6.0));
 	}
@@ -140,7 +136,7 @@ public class DistanceBeaconActivity extends Activity {
 				try {
 					beaconManager.startRanging(region);
 				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 			}

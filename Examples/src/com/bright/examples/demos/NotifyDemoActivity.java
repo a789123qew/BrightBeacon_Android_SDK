@@ -21,14 +21,8 @@ import com.brtbeacon.sdk.MonitoringListener;
 import com.brtbeacon.sdk.ServiceReadyCallback;
 
 /**
- * Demo that shows how to use region monitoring. Two important steps are:
- * <ul>
- * <li>start monitoring region, in example in {@link #onResume()}</li>
- * <li>respond to monitoring changes by registering {@link MonitoringListener}
- * in {@link BeaconManager}</li>
- * </ul>
+ * 演示进入感应范围离开感应范围发出通知到手机
  * 
- * @author
  */
 public class NotifyDemoActivity extends Activity {
 
@@ -53,23 +47,19 @@ public class NotifyDemoActivity extends Activity {
 		notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		beaconManager = new BRTBeaconManager(this);
 
-		// Default values are 5s of scanning and 25s of waiting time to save CPU
-		// cycles.
-		// In order for this demo to be more responsive and immediate we lower
-		// down those values.
 		beaconManager.setBackgroundScanPeriod(TimeUnit.SECONDS.toMillis(1), 0);
 
 		beaconManager.setMonitoringListener(new MonitoringListener() {
 
 			@Override
 			public void onEnteredRegion(BRTRegion arg0, List<BRTBeacon> arg1) {
-				// TODO Auto-generated method stub
+
 				postNotification("Entered region");
 			}
 
 			@Override
 			public void onExitedRegion(BRTRegion arg0) {
-				// TODO Auto-generated method stub
+
 				postNotification("Exited region");
 			}
 
@@ -97,7 +87,7 @@ public class NotifyDemoActivity extends Activity {
 				try {
 					beaconManager.startMonitoring(region);
 				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 
