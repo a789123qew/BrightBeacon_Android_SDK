@@ -32,6 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+         <activity
+            android:name="com.bright.examples.demos.AppkeyActivity"
+            android:label="Select Beacon"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.bright.examples.demos.ConfigDemoActivity"
             android:label="Select Beacon"

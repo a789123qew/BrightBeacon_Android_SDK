@@ -169,6 +169,7 @@ public class CharacteristicsDemoActivity extends Activity {
 		configBeacon.setMeasuredPower(-59);
 		configBeacon.setName("BrightBeacon");
 		configBeacon.setUuid("e2c56db5-dffb-48d2-b060-d0f5a71096e0");
+		configBeacon.setdevolMode(0);
 		connection.setBeaconCharacteristic(configBeacon, new WriteCallback() {
 
 			@Override
