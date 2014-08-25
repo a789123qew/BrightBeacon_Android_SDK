@@ -186,7 +186,7 @@ public class ConfigDemoActivity extends Activity implements OnClickListener {
 		if (!isConn && index < beacons.size()) {
 			if (beacons.get(index).getMajor() == 0
 					&& beacons.get(index).getMinor() == 0) {
-				alertTextView.setText("当前正在操作的Beacon名字:"
+				alertTextView.setText("当前正在操作的Beacon:"
 						+ beacons.get(index).getName());
 				beaconConnection = new BRTBeaconConnection(this,
 						beacons.get(index), new beaconConnectionCallback());
