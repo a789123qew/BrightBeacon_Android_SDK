@@ -29,19 +29,28 @@
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity
+        <activity
+            android:name="com.bright.examples.demos.ConfigBeaconsActivity"
+            android:label="Select Function"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.bright.examples.demos.AppkeyActivity"
             android:label="Select Beacon"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.bright.examples.demos.ConfigDemoActivity"
-            android:label="Select Beacon"
+            android:label="Config Beacon"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.bright.examples.demos.ListBeaconsActivity"
+            android:label="Select Beacon"
+            android:screenOrientation="portrait" />
+          <activity
+            android:name="com.bright.examples.demos.ListBeaconsConfigActivity"
             android:label="Select Beacon"
             android:screenOrientation="portrait" />
         <activity
@@ -63,7 +72,7 @@
         <!-- </>值来自开发者平台取得的AppKey -->
         <meta-data
             android:name="BRTBEACON_APPKEY"
-            android:value="e71e63ce42a40f3d43b3e47c64344076" />
+            android:value="e71e63ce42a40f3d43b3e47c64344075" />
     </application>
 
 </manifest>

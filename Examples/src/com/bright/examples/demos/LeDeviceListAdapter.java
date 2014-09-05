@@ -58,7 +58,7 @@ public class LeDeviceListAdapter extends BaseAdapter {
 	private void bind(BRTBeacon beacon, View view) {
 		ViewHolder holder = (ViewHolder) view.getTag();
 		holder.macTextView.setText(String.format(
-				"Name: %s \nMAC: %s \nDistance:%.2f米 \nUUID: %s",
+				"Name: %s \nMac: %s \nDistance:%.2f米 \nUUID: %s",
 				beacon.getName(), beacon.getMacAddress(),
 				Utils.computeAccuracy(beacon), beacon.getProximityUUID()));
 		holder.majorTextView.setText("Major: " + beacon.getMajor());

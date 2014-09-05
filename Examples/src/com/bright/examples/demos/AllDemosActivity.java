@@ -52,15 +52,6 @@ public class AllDemosActivity extends Activity {
 						startActivity(intent);
 					}
 				});
-		findViewById(R.id.config_demo_button).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Intent intent = new Intent(AllDemosActivity.this,
-								ConfigDemoActivity.class);
-						startActivity(intent);
-					}
-				});
 
 	}
 

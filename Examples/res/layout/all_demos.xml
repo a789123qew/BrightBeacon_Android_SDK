@@ -22,11 +22,4 @@
         android:layout_height="wrap_content"
         android:text="Change Beacon&apos;s Value Demo" />
 
-    <Button
-        android:id="@+id/config_demo_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Config All Beacon&apos;s Value Demo"
-        android:visibility="gone" />
-
 </LinearLayout>

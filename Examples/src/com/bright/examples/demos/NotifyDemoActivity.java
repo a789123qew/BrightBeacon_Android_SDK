@@ -46,9 +46,6 @@ public class NotifyDemoActivity extends Activity {
 				beacon.getMajor(), beacon.getMinor());
 		notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		beaconManager = new BRTBeaconManager(this);
-
-		beaconManager.setBackgroundScanPeriod(TimeUnit.SECONDS.toMillis(1), 0);
-
 		beaconManager.setMonitoringListener(new MonitoringListener() {
 
 			@Override

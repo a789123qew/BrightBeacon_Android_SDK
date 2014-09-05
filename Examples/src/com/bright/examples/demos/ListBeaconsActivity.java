@@ -71,7 +71,7 @@ public class ListBeaconsActivity extends Activity {
 
 		// 创建BRTBeaconManager对象
 		beaconManager = new BRTBeaconManager(this);
-		//回调扫描结果
+		// 回调扫描结果
 		beaconManager.setRangingListener(new RangingListener() {
 
 			@Override
@@ -189,6 +189,7 @@ public class ListBeaconsActivity extends Activity {
 					int position, long id) {
 
 				if (getIntent().getStringExtra(EXTRAS_TARGET_ACTIVITY) != null) {
+
 					try {
 						Class<?> clazz = Class.forName(getIntent()
 								.getStringExtra(EXTRAS_TARGET_ACTIVITY));
