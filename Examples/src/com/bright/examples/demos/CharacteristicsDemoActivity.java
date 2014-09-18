@@ -3,6 +3,7 @@ package com.bright.examples.demos;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
@@ -18,7 +19,6 @@ import com.brtbeacon.sdk.ConfigBeacon;
 import com.brtbeacon.sdk.connection.BRTBeaconConnection;
 import com.brtbeacon.sdk.connection.BeaconCharacteristics;
 import com.brtbeacon.sdk.connection.ConnectionCallback;
-import com.brtbeacon.sdk.connection.UpdateProgressCallback;
 import com.brtbeacon.sdk.connection.WriteCallback;
 
 /**
@@ -43,6 +43,7 @@ public class CharacteristicsDemoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 		setContentView(R.layout.characteristics_demo);
 		beacon = getIntent().getParcelableExtra(
 				ListBeaconsActivity.EXTRAS_BEACON);
@@ -81,7 +82,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("DevolMode value updated");
+								showToast("更新开发模式成功");
 							}
 						});
 					}
@@ -91,7 +92,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("DevolMode not updated");
+								showToast("更新开发模式失败");
 							}
 						});
 					}
@@ -124,22 +125,24 @@ public class CharacteristicsDemoActivity extends Activity {
 		findViewById(R.id.update_dbm4)
 				.setOnClickListener(
 						createUpdateDBMButtonListener(BRTBeaconPower.BRTBeaconPowerLevelPlus4));
-		findViewById(R.id.beacons_cancel).setOnClickListener(
+
+		findViewById(R.id.btn_temperature).setOnClickListener(
 				new OnClickListener() {
 
 					@Override
 					public void onClick(View v) {
-						finish();
+						if (connection.isConnected()) {
+							connection.getTemperature();
+						}
 					}
 				});
-
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		if (!connection.isConnected()) {
-			statusView.setText("Status: Connecting...");
+			statusView.setText("状态: 连接中...");
 
 			new Handler().postDelayed(new Runnable() {
 
@@ -153,9 +156,26 @@ public class CharacteristicsDemoActivity extends Activity {
 	}
 
 	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == android.R.id.home) {
+			connection.close();
+			finish();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		connection.close();
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		connection.close();
+		super.onStop();
 	}
 
 	private OnClickListener createResetButtonListener() {
@@ -163,6 +183,7 @@ public class CharacteristicsDemoActivity extends Activity {
 		return new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+
 				setCharacteristics();
 			}
 
@@ -191,7 +212,7 @@ public class CharacteristicsDemoActivity extends Activity {
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						showToast("reset successful");
+						showToast("重置设备成功");
 					}
 				});
 
@@ -202,7 +223,7 @@ public class CharacteristicsDemoActivity extends Activity {
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						showToast("reset failed");
+						showToast("重置设备失败");
 					}
 				});
 
@@ -344,7 +365,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("Major value updated");
+								showToast("更新主标识成功");
 							}
 						});
 					}
@@ -354,7 +375,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("Major not updated");
+								showToast("更新主标识失败");
 							}
 						});
 					}
@@ -370,7 +391,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("Minor value updated");
+								showToast("更新副标识成功");
 							}
 						});
 					}
@@ -380,7 +401,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("Minor not updated");
+								showToast("更新副标识失败");
 							}
 						});
 					}
@@ -396,7 +417,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("power value updated");
+								showToast("更新测量功率成功");
 							}
 						});
 					}
@@ -406,7 +427,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("power not updated");
+								showToast("更新测量功率失败");
 							}
 						});
 					}
@@ -422,7 +443,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("dbm value updated");
+								showToast("更新发射功率成功");
 							}
 						});
 					}
@@ -432,7 +453,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("dbm not updated");
+								showToast("更新发射功率失败");
 							}
 						});
 					}
@@ -448,7 +469,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("dbm value updated");
+								showToast("更新发射频率成功");
 							}
 						});
 					}
@@ -458,7 +479,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("dbm not updated");
+								showToast("更新发射频率失败");
 							}
 						});
 					}
@@ -474,7 +495,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("name value updated");
+								showToast("更新名称成功");
 							}
 						});
 					}
@@ -484,7 +505,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("name not updated");
+								showToast("更新名称失败");
 							}
 						});
 					}
@@ -500,7 +521,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("uuid value updated");
+								showToast("更新UUID成功");
 							}
 						});
 					}
@@ -510,7 +531,7 @@ public class CharacteristicsDemoActivity extends Activity {
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								showToast("uuid not updated");
+								showToast("更新UUID失败");
 							}
 						});
 					}
@@ -553,37 +574,33 @@ public class CharacteristicsDemoActivity extends Activity {
 
 					@Override
 					public void run() {
-						statusView.setText("Status: Connected to beacon");
+						statusView.setText("状态: 连接成功");
 						StringBuilder sb = new StringBuilder()
-								.append("Name: ")
+								.append("名称: ")
 								.append(beaconChars.getName())
 								.append("\n")
-								.append("UUID: ")
+								.append("区域标识: ")
 								.append(beaconChars.getUUID())
 								.append("\n")
-								.append("Major: ")
+								.append("主标识: ")
 								.append(beaconChars.getMajor())
 								.append("\n")
-								.append("Minor: ")
+								.append("副标识: ")
 								.append(beaconChars.getMinor())
 								.append("\n")
-								.append("Measured Power: ")
+								.append("测量功率: ")
 								.append(beaconChars.getMeasuredPower())
 								.append("\n")
-								.append("TX: ")
-								.append(beaconChars.getTX())
-								.append("\n")
-								.append("LED: ")
-								.append(beaconChars.getLED())
-								.append("\n")
-								.append("AdvertisingIntervalMillis: ")
+								.append("发射频率: ")
 								.append(beaconChars
 										.getAdvertisingIntervalMillis())
-								.append("\n").append("Battery: ")
+								.append("\n").append("电量: ")
 								.append(beaconChars.getBattery()).append("\n")
-								.append("Mode: ")
-								.append(beaconChars.getDevolMode());
-
+								.append("固件版本: ")
+								.append(beaconChars.getVersion()).append("\n")
+								.append("温度: ")
+								.append(beaconChars.getTemperature())
+								.append("\n");
 						beaconDetailsView.setText(sb.toString());
 						majorEditView.setText(String.valueOf(beaconChars
 								.getMajor()));
@@ -600,6 +617,11 @@ public class CharacteristicsDemoActivity extends Activity {
 								.valueOf(beaconChars.getTX())));
 						nameEditView.setText(new String(beaconChars.getName()));
 						afterConnectedView.setVisibility(View.VISIBLE);
+						if (beaconChars.getDevolMode() == 1) {
+							modeSwitch.setChecked(true);
+						} else {
+							modeSwitch.setChecked(false);
+						}
 					}
 				});
 			}
@@ -609,8 +631,7 @@ public class CharacteristicsDemoActivity extends Activity {
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						statusView
-								.setText("Status: Cannot connect to beacon. Authentication problems.");
+						statusView.setText("状态: 验证失败，请检查KEY是否正确.");
 					}
 				});
 			}
@@ -620,18 +641,7 @@ public class CharacteristicsDemoActivity extends Activity {
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						statusView.setText("Status: Disconnected from beacon");
-					}
-				});
-			}
-
-			@Override
-			public void onServicesDiscoveredError() {
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						statusView
-								.setText("Status: Could not discover services");
+						statusView.setText("状态: 连接断开");
 					}
 				});
 			}

@@ -1,7 +1,6 @@
 package com.bright.examples.demos;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import android.app.Activity;
 import android.app.Notification;
@@ -51,13 +50,13 @@ public class NotifyDemoActivity extends Activity {
 			@Override
 			public void onEnteredRegion(BRTRegion arg0, List<BRTBeacon> arg1) {
 
-				postNotification("Entered region");
+				postNotification("进入感应区域");
 			}
 
 			@Override
 			public void onExitedRegion(BRTRegion arg0) {
 
-				postNotification("Exited region");
+				postNotification("离开感应区域");
 			}
 
 		});

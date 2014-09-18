@@ -8,24 +8,25 @@
         android:minSdkVersion="18"
         android:targetSdkVersion="18" />
 
-    <!-- Needed permissions in order to scan for beacons. -->
+    <!-- BrightBeacon-SDK需要的权限. -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <!-- Needed permissions in order to summit for beacons. -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- Declaration that this app is usable on phones with Bluetooth Low Energy. -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 設置是否允许在沒有BLE的设备运行. -->
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="false" />
 
     <application
-        android:label="BrightBeaconDemo"
+        android:icon="@drawable/beacon_gray"
+        android:label="BrightBeacon-SDK示例"
         android:theme="@android:style/Theme.Holo.Light" >
         <activity
             android:name="com.bright.examples.demos.AllDemosActivity"
-            android:label="BrightBeaconDemo"
+            android:label="BrightBeacon-SDK示例"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,38 +35,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.bright.examples.demos.ConfigBeaconsActivity"
-            android:label="Select Function"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.bright.examples.demos.AppkeyActivity"
-            android:label="Select Beacon"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.bright.examples.demos.ConfigDemoActivity"
-            android:label="Config Beacon"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.bright.examples.demos.ListBeaconsActivity"
-            android:label="Select Beacon"
-            android:screenOrientation="portrait" />
-          <activity
-            android:name="com.bright.examples.demos.ListBeaconsConfigActivity"
-            android:label="Select Beacon"
+            android:label="选择Beacon"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.bright.examples.demos.DistanceBeaconActivity"
-            android:label="Distance Demo"
+            android:label="距离感应 示例"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.bright.examples.demos.NotifyDemoActivity"
-            android:label="Notify Demo"
+            android:label="范围感应示例"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.bright.examples.demos.CharacteristicsDemoActivity"
-            android:label="Characteristics Demo"
+            android:label="配置Beacon示例"
             android:screenOrientation="portrait" />
-        <!-- Bright service responsible for scanning beacons. -->
+        <!-- BrightBeacon 扫描服务. -->
         <service
             android:name="com.brtbeacon.sdk.service.BRTBeaconService"
             android:exported="false" />

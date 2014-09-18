@@ -83,8 +83,7 @@ public class ListBeaconsActivity extends Activity {
 					public void run() {
 
 						getActionBar().setSubtitle(
-								"Found beacons: "
-										+ rangingResult.beacons.size());
+								"发现Beacons: " + rangingResult.beacons.size());
 						adapter.replaceWith(rangingResult.sortBeacons);
 					}
 				});
@@ -104,6 +103,7 @@ public class ListBeaconsActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
+			beaconManager.disconnect();
 			finish();
 			return true;
 		}
@@ -123,8 +123,7 @@ public class ListBeaconsActivity extends Activity {
 
 		// 检查是否支持蓝牙低功耗
 		if (!beaconManager.hasBluetooth()) {
-			Toast.makeText(this, "Device does not have Bluetooth Low Energy",
-					Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "该设备没有BLE,不支持本软件.", Toast.LENGTH_LONG).show();
 			return;
 		}
 
@@ -157,16 +156,15 @@ public class ListBeaconsActivity extends Activity {
 			if (resultCode == Activity.RESULT_OK) {
 				connectToService();
 			} else {
-				Toast.makeText(this, "Bluetooth not enabled", Toast.LENGTH_LONG)
-						.show();
-				getActionBar().setSubtitle("Bluetooth not enabled");
+				Toast.makeText(this, "设备蓝牙未打开", Toast.LENGTH_LONG).show();
+				getActionBar().setSubtitle("设备蓝牙未打开");
 			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	private void connectToService() {
-		getActionBar().setSubtitle("Scanning...");
+		getActionBar().setSubtitle("扫描...");
 		adapter.replaceWith(Collections.<BRTBeacon> emptyList());
 		// 扫描之前先建立扫描服务
 		beaconManager.connect(new ServiceReadyCallback() {

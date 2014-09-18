@@ -4,30 +4,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3c3c3c" >
-
-        <TextView
-            android:id="@+id/beacons_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:text="Cancel"
-            android:textColor="@android:color/white" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:text="Config"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -40,13 +16,14 @@
             <TextView
                 android:id="@+id/status"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
 
             <TextView
                 android:id="@+id/beacon_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" />
+                android:layout_margin="10dp" />
 
             <LinearLayout
                 android:id="@+id/after_connected"
@@ -60,31 +37,48 @@
                     android:id="@+id/reset"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="reset" />
+                    android:text="重置" />
+
+                <Button
+                    android:id="@+id/btn_temperature"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="温度" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="区域标识" />
 
                     <EditText
                         android:id="@+id/uuid"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text=" " />
+                        android:singleLine="true"
+                        android:textSize="13sp" />
 
                     <Button
                         android:id="@+id/updateuuid"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="UpdateUUID" />
+                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="主标识" />
 
                     <EditText
                         android:id="@+id/major"
@@ -95,15 +89,20 @@
 
                     <Button
                         android:id="@+id/updatemajor"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="UpdateMajor" />
+                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="副标识" />
 
                     <EditText
                         android:id="@+id/minor"
@@ -114,15 +113,20 @@
 
                     <Button
                         android:id="@+id/updateminor"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="UpdateMinor" />
+                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="测量功率" />
 
                     <EditText
                         android:id="@+id/power"
@@ -133,15 +137,20 @@
 
                     <Button
                         android:id="@+id/updatepower"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="UpdateMeasured" />
+                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="名称" />
 
                     <EditText
                         android:id="@+id/name"
@@ -152,9 +161,9 @@
 
                     <Button
                         android:id="@+id/updatename"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="UpdateName" />
+                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -162,6 +171,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="发射频率" />
 
                     <EditText
                         android:id="@+id/interval"
@@ -172,9 +186,9 @@
 
                     <Button
                         android:id="@+id/updateinterval"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="UpdateInterval" />
+                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -203,7 +217,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TX Power(dbm)" />
+                        android:text="发射功率" />
 
                     <TextView
                         android:id="@+id/dbm"
@@ -222,34 +236,32 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="BRTBeaconPowerLevelMinus23" />
+                        android:text="Minus23"
+                        android:textSize="13sp" />
 
                     <Button
                         android:id="@+id/update_dbm6"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="BRTBeaconPowerLevelMinus6" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                        android:text="Minus6"
+                        android:textSize="13sp" />
 
                     <Button
                         android:id="@+id/update_dbm0"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="BRTBeaconPowerLevelDefault" />
+                        android:text="Default"
+                        android:textSize="13sp" />
 
                     <Button
                         android:id="@+id/update_dbm4"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="BRTBeaconPowerLevelPlus4" />
+                        android:text="Plus4"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

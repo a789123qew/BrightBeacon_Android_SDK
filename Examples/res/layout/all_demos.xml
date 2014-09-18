@@ -8,18 +8,18 @@
         android:id="@+id/distance_demo_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Distance Demo" />
+        android:text="距离感应演示" />
 
     <Button
         android:id="@+id/notify_demo_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notify Demo" />
+        android:text="区域感应演示" />
 
     <Button
         android:id="@+id/characteristics_demo_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change Beacon&apos;s Value Demo" />
+        android:text="连接配置演示" />
 
 </LinearLayout>
