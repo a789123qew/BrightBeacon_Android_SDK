@@ -24,19 +24,19 @@ import com.brtbeacon.sdk.service.RangingResult;
  */
 public class DistanceBeaconActivity extends Activity {
 
-	private static final String	TAG					= DistanceBeaconActivity.class
-															.getSimpleName();
+	private static final String TAG = DistanceBeaconActivity.class
+			.getSimpleName();
 	// Y positions are relative to height of bg_distance image.
-	private static final double	RELATIVE_START_POS	= 320.0 / 1110.0;
-	private static final double	RELATIVE_STOP_POS	= 885.0 / 1110.0;
+	private static final double RELATIVE_START_POS = 320.0 / 1110.0;
+	private static final double RELATIVE_STOP_POS = 885.0 / 1110.0;
 
-	private BRTBeaconManager	beaconManager;
-	private BRTBeacon			beacon;
-	private BRTRegion			region;
+	private BRTBeaconManager beaconManager;
+	private BRTBeacon beacon;
+	private BRTRegion region;
 
-	private View				dotView;
-	private int					startY				= -1;
-	private int					segmentLength		= -1;
+	private View dotView;
+	private int startY = -1;
+	private int segmentLength = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class DistanceBeaconActivity extends Activity {
 		beacon = getIntent().getParcelableExtra(
 				ListBeaconsActivity.EXTRAS_BEACON);
 		region = new BRTRegion("regionid", beacon.getProximityUUID(),
-				beacon.getMajor(), beacon.getMinor());
+				beacon.getMacAddress(), beacon.getMajor(), beacon.getMinor());
 		if (beacon == null) {
 			Toast.makeText(this, "Beacon not found in intent extras",
 					Toast.LENGTH_LONG).show();

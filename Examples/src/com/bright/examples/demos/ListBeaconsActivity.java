@@ -31,30 +31,23 @@ import com.brtbeacon.sdk.utils.L;
  */
 public class ListBeaconsActivity extends Activity {
 
-	private static final String		TAG							= ListBeaconsActivity.class
-																		.getSimpleName();
+	private static final String TAG = ListBeaconsActivity.class.getSimpleName();
 
-	public static final String		EXTRAS_TARGET_ACTIVITY		= "extrasTargetActivity";
-	public static final String		EXTRAS_BEACON				= "extrasBeacon";
+	public static final String EXTRAS_TARGET_ACTIVITY = "extrasTargetActivity";
+	public static final String EXTRAS_BEACON = "extrasBeacon";
 
-	private static final int		REQUEST_ENABLE_BT			= 1234;
+	private static final int REQUEST_ENABLE_BT = 1234;
 	/**
 	 * 用于标识扫描指定uuid的设备 uuid为null 表示扫描所有
 	 */
-	private static final BRTRegion	ALL_BRIGHT_BEACONS_REGION	= new BRTRegion(
-																		"rid",
-																		null,
-																		null,
-																		null);
+	private static final BRTRegion ALL_BRIGHT_BEACONS_REGION = new BRTRegion(
+			"rid", null, null, null, null);
 
-	private static final String		BRIGHT_PROXIMITY_UUID		= "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
-	private static final BRTRegion	BRIGHT_BEACONS_REGION		= new BRTRegion(
-																		"rid",
-																		BRIGHT_PROXIMITY_UUID,
-																		null,
-																		null);
-	private BRTBeaconManager		beaconManager;
-	private LeDeviceListAdapter		adapter;
+	private static final String BRIGHT_PROXIMITY_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+	private static final BRTRegion BRIGHT_BEACONS_REGION = new BRTRegion("rid",
+			BRIGHT_PROXIMITY_UUID, null,null, null);
+	private BRTBeaconManager beaconManager;
+	private LeDeviceListAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
