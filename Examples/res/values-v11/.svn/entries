@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="https://111.10.24.164/svn/BRT"
+   revision="306"
+   last-author="liupeng"
+   url="https://111.10.24.164/svn/BRT/Android/Bright/res/values-v11"
+   committed-rev="306"
+   kind="dir"
+   committed-date="2014-07-31T02:56:29.471000Z"/>
+<entry
+   name="styles.xml"
+   checksum="5fbfc293816913a3df135469e8f2a754"
+   last-author="liupeng"
+   text-time="2014-04-10T05:46:42.663000Z"
+   committed-rev="306"
+   kind="file"
+   committed-date="2014-07-31T02:56:29.471000Z"/>
+</wc-entries>
