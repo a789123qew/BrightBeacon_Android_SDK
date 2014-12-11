@@ -148,10 +148,9 @@ public class CharacteristicsDemoActivity extends Activity {
 
 				@Override
 				public void run() {
-					connection.authenticate();
+					connection.connect();
 				}
 			}, 3000);
-
 		}
 	}
 

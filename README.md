@@ -26,6 +26,7 @@ SDK API文档:
 
 - 2014.12.6:1.固件更新v5，修复电量计算bug；2.修复固件更新bug；3.修复离开监听范围bug（BRTBeacon对象构造方法添加一个macAddress参数）。
 - 2014.11.26:固件升级为V4.
+- 2014.12.11:（brightbeacon-sdk-1.2.2.jar）修复红米，小米手机扫描bug。更改BRTBeaconConnection类中authenticate()方法名为connect();
 
  
 
