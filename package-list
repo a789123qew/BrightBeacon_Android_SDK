@@ -1,5 +1,4 @@
 com.brtbeacon.sdk
 com.brtbeacon.sdk.connection
-com.brtbeacon.sdk.internal
 com.brtbeacon.sdk.service
 com.brtbeacon.sdk.utils
