@@ -8,7 +8,7 @@ import android.view.View;
 
 public class DistanceBackgroundView extends View {
 
-	private final Drawable	drawable;
+	private final Drawable drawable;
 
 	public DistanceBackgroundView(Context context, AttributeSet attrs) {
 		super(context, attrs);

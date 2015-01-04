@@ -22,9 +22,9 @@ import com.brtbeacon.sdk.service.RangingResult;
  * 演示Beacon感应距离
  * 
  */
-public class DistanceBeaconActivity extends Activity {
+public class BRTBeaconDistanceActivity extends Activity {
 
-	private static final String TAG = DistanceBeaconActivity.class
+	private static final String TAG = BRTBeaconDistanceActivity.class
 			.getSimpleName();
 	// Y positions are relative to height of bg_distance image.
 	private static final double RELATIVE_START_POS = 320.0 / 1110.0;
@@ -47,7 +47,7 @@ public class DistanceBeaconActivity extends Activity {
 		dotView = findViewById(R.id.dot);
 
 		beacon = getIntent().getParcelableExtra(
-				ListBeaconsActivity.EXTRAS_BEACON);
+				BRTBeaconManagerListBeaconsActivity.EXTRAS_BEACON);
 		region = new BRTRegion("regionid", beacon.getProximityUUID(),
 				beacon.getMacAddress(), beacon.getMajor(), beacon.getMinor());
 		if (beacon == null) {
@@ -62,7 +62,6 @@ public class DistanceBeaconActivity extends Activity {
 			@Override
 			public void onBeaconsDiscovered(final RangingResult rangingResult) {
 
-				// Note that results are not delivered on UI thread.
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {

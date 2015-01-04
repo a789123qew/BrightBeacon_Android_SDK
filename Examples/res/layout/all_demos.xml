@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/all_demos_title"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/distance_demo_button"
         android:layout_width="match_parent"

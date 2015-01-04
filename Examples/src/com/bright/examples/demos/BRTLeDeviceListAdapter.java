@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,12 @@ import com.brtbeacon.sdk.Utils;
  * 列表适配器
  * 
  */
-public class LeDeviceListAdapter extends BaseAdapter {
+public class BRTLeDeviceListAdapter extends BaseAdapter {
 
-	private ArrayList<BRTBeacon>	beacons;
-	private LayoutInflater			inflater;
+	private ArrayList<BRTBeacon> beacons;
+	private LayoutInflater inflater;
 
-	public LeDeviceListAdapter(Context context) {
+	public BRTLeDeviceListAdapter(Context context) {
 		this.inflater = LayoutInflater.from(context);
 		this.beacons = new ArrayList<BRTBeacon>();
 	}
@@ -58,12 +59,13 @@ public class LeDeviceListAdapter extends BaseAdapter {
 	private void bind(BRTBeacon beacon, View view) {
 		ViewHolder holder = (ViewHolder) view.getTag();
 		holder.macTextView.setText(String.format(
-				"Name: %s \nMac: %s \nDistance:%.2f米 \nUUID: %s",
-				beacon.getName(), beacon.getMacAddress(),
-				Utils.computeAccuracy(beacon), beacon.getProximityUUID()));
+				"Name: %s \nMac: %s \nDistance:%.2f米 \nUUID: %s", TextUtils
+						.isEmpty(beacon.getName()) ? "" : beacon.getName(),
+				beacon.getMacAddress(), Utils.computeAccuracy(beacon), beacon
+						.getProximityUUID().toUpperCase()));
 		holder.majorTextView.setText("Major: " + beacon.getMajor());
 		holder.minorTextView.setText("Minor: " + beacon.getMinor());
-		holder.measuredPowerTextView.setText("MPower: "
+		holder.measuredPowerTextView.setText("MeasuredPower: "
 				+ beacon.getMeasuredPower());
 		holder.rssiTextView.setText("Rssi: " + beacon.getRssi());
 	}
@@ -77,11 +79,11 @@ public class LeDeviceListAdapter extends BaseAdapter {
 	}
 
 	static class ViewHolder {
-		final TextView	macTextView;
-		final TextView	majorTextView;
-		final TextView	minorTextView;
-		final TextView	measuredPowerTextView;
-		final TextView	rssiTextView;
+		final TextView macTextView;
+		final TextView majorTextView;
+		final TextView minorTextView;
+		final TextView measuredPowerTextView;
+		final TextView rssiTextView;
 
 		ViewHolder(View view) {
 			macTextView = (TextView) view.findViewWithTag("mac");

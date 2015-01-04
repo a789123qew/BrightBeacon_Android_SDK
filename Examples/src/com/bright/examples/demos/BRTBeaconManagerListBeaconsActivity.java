@@ -21,17 +21,10 @@ import com.brtbeacon.sdk.BRTRegion;
 import com.brtbeacon.sdk.RangingListener;
 import com.brtbeacon.sdk.ServiceReadyCallback;
 import com.brtbeacon.sdk.service.RangingResult;
-import com.brtbeacon.sdk.utils.L;
 
-/**
- * Displays list of found beacons sorted by RSSI. Starts new activity with
- * selected beacon if activity was provided.
- * 
- * @author
- */
-public class ListBeaconsActivity extends Activity {
+public class BRTBeaconManagerListBeaconsActivity extends Activity {
 
-	private static final String TAG = ListBeaconsActivity.class.getSimpleName();
+	private static final String TAG = BRTBeaconManagerListBeaconsActivity.class.getSimpleName();
 
 	public static final String EXTRAS_TARGET_ACTIVITY = "extrasTargetActivity";
 	public static final String EXTRAS_BEACON = "extrasBeacon";
@@ -47,7 +40,7 @@ public class ListBeaconsActivity extends Activity {
 	private static final BRTRegion BRIGHT_BEACONS_REGION = new BRTRegion("rid",
 			BRIGHT_PROXIMITY_UUID, null, null, null);
 	private BRTBeaconManager beaconManager;
-	private LeDeviceListAdapter adapter;
+	private BRTLeDeviceListAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +48,7 @@ public class ListBeaconsActivity extends Activity {
 		setContentView(R.layout.main);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		adapter = new LeDeviceListAdapter(this);
+		adapter = new BRTLeDeviceListAdapter(this);
 		ListView list = (ListView) findViewById(R.id.device_list);
 		list.setAdapter(adapter);
 		list.setOnItemClickListener(createOnItemClickListener());
@@ -67,13 +60,12 @@ public class ListBeaconsActivity extends Activity {
 			@Override
 			public void onBeaconsDiscovered(final RangingResult rangingResult) {
 
-				// Note that results are not delivered on UI thread.
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
 
 						getActionBar().setSubtitle(
-								"发现Beacons: " + rangingResult.beacons.size());
+								"附近Beacon个数: " + rangingResult.beacons.size());
 						adapter.replaceWith(rangingResult.sortBeacons);
 					}
 				});
@@ -154,7 +146,7 @@ public class ListBeaconsActivity extends Activity {
 	}
 
 	private void connectToService() {
-		getActionBar().setSubtitle("扫描...");
+		getActionBar().setSubtitle("扫描中...");
 		adapter.replaceWith(Collections.<BRTBeacon> emptyList());
 		// 扫描之前先建立扫描服务
 		beaconManager.connect(new ServiceReadyCallback() {
@@ -181,7 +173,7 @@ public class ListBeaconsActivity extends Activity {
 					try {
 						Class<?> clazz = Class.forName(getIntent()
 								.getStringExtra(EXTRAS_TARGET_ACTIVITY));
-						Intent intent = new Intent(ListBeaconsActivity.this,
+						Intent intent = new Intent(BRTBeaconManagerListBeaconsActivity.this,
 								clazz);
 						intent.putExtra(EXTRAS_BEACON,
 								adapter.getItem(position));

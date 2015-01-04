@@ -11,39 +11,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/beacon_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:layout_marginTop="10dp" />
 
             <LinearLayout
                 android:id="@+id/after_connected"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 android:visibility="gone" >
-
-                <Button
-                    android:id="@+id/reset"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="重置" />
-
-                <Button
-                    android:id="@+id/btn_temperature"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="温度" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -51,9 +39,9 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="区域标识" />
+                        android:text="UUID" />
 
                     <EditText
                         android:id="@+id/uuid"
@@ -61,13 +49,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:singleLine="true"
-                        android:textSize="13sp" />
-
-                    <Button
-                        android:id="@+id/updateuuid"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="更新" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -76,22 +58,17 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="主标识" />
+                        android:text="Major" />
 
                     <EditText
                         android:id="@+id/major"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:inputType="number"
                         android:text=" " />
-
-                    <Button
-                        android:id="@+id/updatemajor"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -100,22 +77,17 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="副标识" />
+                        android:text="Minor" />
 
                     <EditText
                         android:id="@+id/minor"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:inputType="number"
                         android:text=" " />
-
-                    <Button
-                        android:id="@+id/updateminor"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -124,22 +96,17 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="测量功率" />
+                        android:text="MeasuredPower" />
 
                     <EditText
                         android:id="@+id/power"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:inputType="number"
                         android:text=" " />
-
-                    <Button
-                        android:id="@+id/updatepower"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -148,9 +115,9 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="名称" />
+                        android:text="Name" />
 
                     <EditText
                         android:id="@+id/name"
@@ -158,12 +125,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text=" " />
-
-                    <Button
-                        android:id="@+id/updatename"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -173,22 +134,17 @@
                     android:orientation="horizontal" >
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="发射频率" />
+                        android:text="Interval" />
 
                     <EditText
                         android:id="@+id/interval"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:inputType="number"
                         android:text="250ms" />
-
-                    <Button
-                        android:id="@+id/updateinterval"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="更新" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -229,40 +185,59 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:orientation="vertical" >
 
-                    <Button
-                        android:id="@+id/update_dbm23"
-                        android:layout_width="0dp"
+                    <RadioGroup
+                        android:id="@+id/radiogroup"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Minus23"
-                        android:textSize="13sp" />
+                        android:orientation="horizontal" >
 
-                    <Button
-                        android:id="@+id/update_dbm6"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Minus6"
-                        android:textSize="13sp" />
+                        <RadioButton
+                            android:id="@+id/update_dbm23"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Minus23"
+                            android:textSize="13sp" />
 
-                    <Button
-                        android:id="@+id/update_dbm0"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Default"
-                        android:textSize="13sp" />
+                        <RadioButton
+                            android:id="@+id/update_dbm6"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Minus6"
+                            android:textSize="13sp" />
 
-                    <Button
-                        android:id="@+id/update_dbm4"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Plus4"
-                        android:textSize="13sp" />
+                        <RadioButton
+                            android:id="@+id/update_dbm0"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Default"
+                            android:textSize="13sp" />
+
+                        <RadioButton
+                            android:id="@+id/update_dbm4"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Plus4"
+                            android:textSize="13sp" />
+                    </RadioGroup>
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_temperature"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="温度电量检测" />
+
+                <Button
+                    android:id="@+id/btn_update"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="修改" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

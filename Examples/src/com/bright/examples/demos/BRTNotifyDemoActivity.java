@@ -23,15 +23,14 @@ import com.brtbeacon.sdk.ServiceReadyCallback;
  * 演示进入感应范围离开感应范围发出通知到手机
  * 
  */
-public class NotifyDemoActivity extends Activity {
+public class BRTNotifyDemoActivity extends Activity {
 
-	private static final String	TAG				= NotifyDemoActivity.class
-														.getSimpleName();
-	private static final int	NOTIFICATION_ID	= 123;
+	private static final String TAG = BRTNotifyDemoActivity.class.getSimpleName();
+	private static final int NOTIFICATION_ID = 123;
 
-	private BRTBeaconManager	beaconManager;
-	private NotificationManager	notificationManager;
-	private BRTRegion			region;
+	private BRTBeaconManager beaconManager;
+	private NotificationManager notificationManager;
+	private BRTRegion region;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +39,9 @@ public class NotifyDemoActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		BRTBeacon beacon = getIntent().getParcelableExtra(
-				ListBeaconsActivity.EXTRAS_BEACON);
-		region = new BRTRegion("regionId", beacon.getProximityUUID(),beacon.getMacAddress(),
-				beacon.getMajor(), beacon.getMinor());
+				BRTBeaconManagerListBeaconsActivity.EXTRAS_BEACON);
+		region = new BRTRegion("regionId", beacon.getProximityUUID(),
+				beacon.getMacAddress(), beacon.getMajor(), beacon.getMinor());
 		notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		beaconManager = new BRTBeaconManager(this);
 		beaconManager.setMonitoringListener(new MonitoringListener() {
@@ -99,14 +98,14 @@ public class NotifyDemoActivity extends Activity {
 	}
 
 	private void postNotification(String msg) {
-		Intent notifyIntent = new Intent(NotifyDemoActivity.this,
-				NotifyDemoActivity.class);
+		Intent notifyIntent = new Intent(BRTNotifyDemoActivity.this,
+				BRTNotifyDemoActivity.class);
 		notifyIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 		PendingIntent pendingIntent = PendingIntent.getActivities(
-				NotifyDemoActivity.this, 0, new Intent[] { notifyIntent },
+				BRTNotifyDemoActivity.this, 0, new Intent[] { notifyIntent },
 				PendingIntent.FLAG_UPDATE_CURRENT);
 		Notification notification = new Notification.Builder(
-				NotifyDemoActivity.this).setSmallIcon(R.drawable.beacon_gray)
+				BRTNotifyDemoActivity.this).setSmallIcon(R.drawable.beacon_gray)
 				.setContentTitle("Notify Demo").setContentText(msg)
 				.setAutoCancel(true).setContentIntent(pendingIntent).build();
 		notification.defaults |= Notification.DEFAULT_SOUND;

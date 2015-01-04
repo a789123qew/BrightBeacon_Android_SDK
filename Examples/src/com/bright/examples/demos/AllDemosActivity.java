@@ -21,10 +21,10 @@ public class AllDemosActivity extends Activity {
 					@Override
 					public void onClick(View v) {
 						Intent intent = new Intent(AllDemosActivity.this,
-								ListBeaconsActivity.class);
+								BRTBeaconManagerListBeaconsActivity.class);
 						intent.putExtra(
-								ListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
-								DistanceBeaconActivity.class.getName());
+								BRTBeaconManagerListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
+								BRTBeaconDistanceActivity.class.getName());
 						startActivity(intent);
 					}
 				});
@@ -33,10 +33,10 @@ public class AllDemosActivity extends Activity {
 					@Override
 					public void onClick(View v) {
 						Intent intent = new Intent(AllDemosActivity.this,
-								ListBeaconsActivity.class);
+								BRTBeaconManagerListBeaconsActivity.class);
 						intent.putExtra(
-								ListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
-								NotifyDemoActivity.class.getName());
+								BRTBeaconManagerListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
+								BRTNotifyDemoActivity.class.getName());
 						startActivity(intent);
 					}
 				});
@@ -45,10 +45,10 @@ public class AllDemosActivity extends Activity {
 					@Override
 					public void onClick(View v) {
 						Intent intent = new Intent(AllDemosActivity.this,
-								ListBeaconsActivity.class);
+								BRTBeaconManagerListBeaconsActivity.class);
 						intent.putExtra(
-								ListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
-								CharacteristicsDemoActivity.class.getName());
+								BRTBeaconManagerListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
+								BRTBeaconConnectionDemoActivity.class.getName());
 						startActivity(intent);
 					}
 				});
