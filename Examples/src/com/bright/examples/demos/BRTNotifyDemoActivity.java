@@ -25,7 +25,8 @@ import com.brtbeacon.sdk.ServiceReadyCallback;
  */
 public class BRTNotifyDemoActivity extends Activity {
 
-	private static final String TAG = BRTNotifyDemoActivity.class.getSimpleName();
+	private static final String TAG = BRTNotifyDemoActivity.class
+			.getSimpleName();
 	private static final int NOTIFICATION_ID = 123;
 
 	private BRTBeaconManager beaconManager;
@@ -53,7 +54,7 @@ public class BRTNotifyDemoActivity extends Activity {
 			}
 
 			@Override
-			public void onExitedRegion(BRTRegion arg0) {
+			public void onExitedRegion(BRTRegion arg0, List<BRTBeacon> arg1) {
 
 				postNotification("离开感应区域");
 			}
@@ -105,7 +106,8 @@ public class BRTNotifyDemoActivity extends Activity {
 				BRTNotifyDemoActivity.this, 0, new Intent[] { notifyIntent },
 				PendingIntent.FLAG_UPDATE_CURRENT);
 		Notification notification = new Notification.Builder(
-				BRTNotifyDemoActivity.this).setSmallIcon(R.drawable.beacon_gray)
+				BRTNotifyDemoActivity.this)
+				.setSmallIcon(R.drawable.beacon_gray)
 				.setContentTitle("Notify Demo").setContentText(msg)
 				.setAutoCancel(true).setContentIntent(pendingIntent).build();
 		notification.defaults |= Notification.DEFAULT_SOUND;
