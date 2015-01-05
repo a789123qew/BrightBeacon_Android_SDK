@@ -26,6 +26,7 @@ SDK API文档:
 #1.3.1(2014.1.5)#
 - 1.MonitoringListener接口中的onExitedRegion()方法新增返回参数(List<.BRTBeacon>);
 - 2.判断一个Beacon离开范围的时间设置为5s。
+
 #1.3.0(2014.1.4)#
 - 1.所有涉及测量功率的方法都使用枚举BRTBeaconPower;
 - 2.BRTBeaconManager类新增startMonitoringForRegion()开启后台服务扫描Beacon。
