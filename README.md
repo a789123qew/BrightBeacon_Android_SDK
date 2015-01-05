@@ -23,16 +23,23 @@ SDK API文档:
  
 更新日志:
 
-- 2014.1.5:（brightbeacon-sdk-1.3.1.jar）
-- 1.MonitoringListener接口中的onExitedRegion()方法新增1个返回参数(List<.BRTBeacon>);
+#1.3.1(2014.1.5)#
+- 1.MonitoringListener接口中的onExitedRegion()方法新增返回参数(List<.BRTBeacon>);
 - 2.判断一个Beacon离开范围的时间设置为5s。
-- 2014.1.4:（brightbeacon-sdk-1.3.0.jar）
+#1.3.0(2014.1.4)#
 - 1.所有涉及测量功率的方法都使用枚举BRTBeaconPower;
-- 2.BRTBeaconManager类新增startMonitoringForRegion()开启后台服务扫描Beacon;
-- 2014.12.15:（brightbeacon-sdk-1.2.3.jar）修复1.2.2中固件检测bug；
-- 2014.12.11:（brightbeacon-sdk-1.2.2.jar）修复红米，小米手机扫描bug。更改BRTBeaconConnection类中authenticate()方法名为connect();
-- 2014.12.6:1.固件更新v5，修复电量计算bug；2.修复固件更新bug；3.修复离开监听范围bug（BRTBeacon对象构造方法添加一个macAddress参数）；
-- 2014.11.26:固件升级为V4；
+- 2.BRTBeaconManager类新增startMonitoringForRegion()开启后台服务扫描Beacon。
+#1.2.3(2014.12.15)#
+- 1.修复1.2.2中固件检测bug；
+#1.2.2(2014.12.11)#
+- 1.修复红米，小米手机扫描bug。
+- 2.更改BRTBeaconConnection类中authenticate()方法名为connect()。
+#1.2.1(2014.12.6)#
+- 1.固件更新v5，修复电量计算bug；
+- 2.修复固件更新bug；
+- 3.修复离开监听范围bug（BRTBeacon对象构造方法添加macAddress参数）。
+#1.2.0(2014.11.26)#
+- 1.固件升级为V4。
 
 
  
