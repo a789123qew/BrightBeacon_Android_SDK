@@ -135,7 +135,6 @@ public class BRTBeaconDistanceActivity extends Activity {
 				try {
 					beaconManager.startRanging(region);
 				} catch (RemoteException e) {
-
 					e.printStackTrace();
 				}
 			}
