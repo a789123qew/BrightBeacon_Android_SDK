@@ -23,6 +23,10 @@ SDK API文档:
  
 更新日志:
 
+#2.0.1(2014.1.29)#
+- 1.兼容固件2.0;
+- 2.一些方法名称的改动,详见sdk使用提醒文档
+
 #1.3.1(2014.1.5)#
 - 1.MonitoringListener接口中的onExitedRegion()方法新增返回参数(List<.BRTBeacon>);
 - 2.判断一个Beacon离开范围的时间设置为5s。
