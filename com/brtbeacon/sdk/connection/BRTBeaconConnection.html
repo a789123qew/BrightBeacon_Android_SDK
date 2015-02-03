@@ -134,7 +134,13 @@ extends java.lang.Object</pre>
         
         3.写入
         例如写入Beacon的Major值：
-        connection.writeMajor(major,new callback());
+		//创建配置对象
+		ConfigBeacon configBeacon = new ConfigBeacon();
+		//设置Major值，其他如config.setMinor(1);
+		configBeacon.setMajor(50);
+		//执行修改操作
+		connection.setBeaconCharacteristic(configBeacon, new WriteCallback() {
+		};
       }
      
       public void onAuthenticationError() {
