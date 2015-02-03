@@ -128,7 +128,7 @@ extends java.lang.Object</pre>
      private static final BRTRegion ALL_BRIGHT_BEACONS = new BRTRegion("rid", BRIGHT_PROXIMITY_UUID, null, null);
      
      //1.创建BRTBeaconManager对象
-     BRTBeaconManager beaconManager = BRTBeaconManager.getInstance(context);
+     BRTBeaconManager beaconManager =  new BRTBeaconManager(context);
      
      //2.设置扫描回调
      beaconManager.setRangingListener(new RangingListener() {
