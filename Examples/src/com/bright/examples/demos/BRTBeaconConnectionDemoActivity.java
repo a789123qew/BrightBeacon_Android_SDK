@@ -43,7 +43,6 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 	private View afterConnectedView;
 	private RadioGroup radioGroup;
 	private Switch modeSwitch;// 开发模式
-	private int state = 0;// 开发模式
 	private ProgressDialog dialogAlert;
 	private BRTBeaconPower txpower;
 	private RadioButton radioButtondbm23;
@@ -54,17 +53,16 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 	private int radiodbm6;
 	private int radiodbm0;
 	private int radiodbm4;
+	private int pMode = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		setContentView(R.layout.characteristics_demo);
-		beacon = getIntent().getParcelableExtra(
-				BRTBeaconManagerListBeaconsActivity.EXTRAS_BEACON);
+		beacon = getIntent().getParcelableExtra(BRTBeaconManagerListBeaconsActivity.EXTRAS_BEACON);
 		init();
-		connection = new BRTBeaconConnection(this, beacon,
-				createConnectionCallback());
+		connection = new BRTBeaconConnection(this, beacon, createConnectionCallback());
 	}
 
 	private void init() {
@@ -87,16 +85,15 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 				setCharacteristics();
 			}
 		});
-		findViewById(R.id.btn_temperature).setOnClickListener(
-				new OnClickListener() {
+		findViewById(R.id.btn_temperature).setOnClickListener(new OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						if (connection.isConnected()) {
-							connection.getTemperature();
-						}
-					}
-				});
+			@Override
+			public void onClick(View v) {
+				if (connection.isConnected()) {
+					connection.getTemperature();
+				}
+			}
+		});
 		radioButtondbm23 = (RadioButton) findViewById(R.id.update_dbm23);
 		radioButtondbm6 = (RadioButton) findViewById(R.id.update_dbm6);
 		radioButtondbm0 = (RadioButton) findViewById(R.id.update_dbm0);
@@ -106,56 +103,32 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 		radiodbm0 = radioButtondbm0.getId();
 		radiodbm4 = radioButtondbm4.getId();
 		radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
-		radioGroup
-				.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+		radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
-					@Override
-					public void onCheckedChanged(RadioGroup group, int checkedId) {
-						if (checkedId == radiobm23) {
-							txpower = BRTBeaconPower.BRTBeaconPowerLevelMinus23;
-						} else if (checkedId == radiodbm6) {
-							txpower = BRTBeaconPower.BRTBeaconPowerLevelMinus6;
-						} else if (checkedId == radiodbm0) {
-							txpower = BRTBeaconPower.BRTBeaconPowerLevelDefault;
-						} else if (checkedId == radiodbm4) {
-							txpower = BRTBeaconPower.BRTBeaconPowerLevelPlus4;
-						}
-					}
-				});
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				if (checkedId == radiobm23) {
+					txpower = BRTBeaconPower.BRTBeaconPowerLevelMinus23;
+				} else if (checkedId == radiodbm6) {
+					txpower = BRTBeaconPower.BRTBeaconPowerLevelMinus6;
+				} else if (checkedId == radiodbm0) {
+					txpower = BRTBeaconPower.BRTBeaconPowerLevelDefault;
+				} else if (checkedId == radiodbm4) {
+					txpower = BRTBeaconPower.BRTBeaconPowerLevelPlus4;
+				}
+			}
+		});
 		modeSwitch = (Switch) findViewById(R.id.mode);
 		modeSwitch.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView,
-					boolean isChecked) {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
 				if (isChecked) {
-					state = 1;
+					pMode = 1;
 				} else {
-					state = 0;
+					pMode = 0;
 				}
-				connection.writeDevolMode(state, new WriteCallback() {
-
-					@Override
-					public void onSuccess() {
-						runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								showToast("更新开发模式成功");
-							}
-						});
-					}
-
-					@Override
-					public void onError() {
-						runOnUiThread(new Runnable() {
-							@Override
-							public void run() {
-								showToast("更新开发模式失败");
-							}
-						});
-					}
-				});
 			}
 		});
 
@@ -169,16 +142,12 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 		ConfigBeacon configBeacon = new ConfigBeacon();
 		configBeacon.setName(nameEditView.getText().toString());
 		configBeacon.setUuid(uuidEditView.getText().toString());
-		configBeacon.setMajor(Integer.parseInt(majorEditView.getText()
-				.toString()));
-		configBeacon.setMinor(Integer.parseInt(minorEditView.getText()
-				.toString()));
-		configBeacon.setIntervalMillis(Integer.parseInt(intervalEditView
-				.getText().toString()));
+		configBeacon.setMajor(Integer.parseInt(majorEditView.getText().toString()));
+		configBeacon.setMinor(Integer.parseInt(minorEditView.getText().toString()));
+		configBeacon.setIntervalMillis(Integer.parseInt(intervalEditView.getText().toString()));
 		configBeacon.setTxPower(BRTBeaconConnectionDemoActivity.this.txpower);
-		configBeacon.setMeasuredPower(Integer.parseInt(measuredPowerEditView
-				.getText().toString()));
-		configBeacon.setdevolMode(state);
+		configBeacon.setMeasuredPower(Integer.parseInt(measuredPowerEditView.getText().toString()));
+		configBeacon.setdevolMode(pMode);
 		connection.setBeaconCharacteristic(configBeacon, new WriteCallback() {
 
 			@Override
@@ -210,18 +179,18 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 	private String matchtxvalue(BRTBeaconPower tx) {
 		String txvalue = "BRTBeaconPowerLevelDefault";
 		switch (tx) {
-		case BRTBeaconPowerLevelMinus23:
-			txvalue = "BRTBeaconPowerLevelMinus23";
-			break;
-		case BRTBeaconPowerLevelMinus6:
-			txvalue = "BRTBeaconPowerLevelMinus6";
-			break;
-		case BRTBeaconPowerLevelDefault:
-			txvalue = "BRTBeaconPowerLevelDefault";
-			break;
-		case BRTBeaconPowerLevelPlus4:
-			txvalue = "BRTBeaconPowerLevelPlus4";
-			break;
+			case BRTBeaconPowerLevelMinus23:
+				txvalue = "BRTBeaconPowerLevelMinus23";
+				break;
+			case BRTBeaconPowerLevelMinus6:
+				txvalue = "BRTBeaconPowerLevelMinus6";
+				break;
+			case BRTBeaconPowerLevelDefault:
+				txvalue = "BRTBeaconPowerLevelDefault";
+				break;
+			case BRTBeaconPowerLevelPlus4:
+				txvalue = "BRTBeaconPowerLevelPlus4";
+				break;
 		}
 		return txvalue;
 	}
@@ -250,50 +219,41 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 					@Override
 					public void run() {
 						statusView.setText("状态: 连接成功");
-						StringBuilder sb = new StringBuilder().append("电量: ")
-								.append(beaconChars.getBattery()).append("%\n")
-								.append("温度: ")
-								.append(beaconChars.getTemperature())
-								.append("℃").append("固件版本: ")
-								.append(beaconChars.getVersion()).append("\n");
+						StringBuilder sb = new StringBuilder().append("电量: ").append(beaconChars.getBattery())
+								.append("%\n").append("温度: ").append(beaconChars.getTemperature()).append("℃")
+								.append("\n固件版本: ").append(beaconChars.getVersion()).append("\n");
 						beaconDetailsView.setText(sb.toString());
 						cancelDialog();
-						majorEditView.setText(String.valueOf(beaconChars
-								.getMajor()));
-						minorEditView.setText(String.valueOf(beaconChars
-								.getMinor()));
-						uuidEditView.setText(String.valueOf(beaconChars
-								.getUUID()));
-						intervalEditView.setText(String.valueOf(beaconChars
-								.getAdvertisingIntervalMillis()));
-						measuredPowerEditView.setText(String
-								.valueOf(beaconChars.getMeasuredPower()));
+						majorEditView.setText(String.valueOf(beaconChars.getMajor()));
+						minorEditView.setText(String.valueOf(beaconChars.getMinor()));
+						uuidEditView.setText(String.valueOf(beaconChars.getUUID()));
+						intervalEditView.setText(String.valueOf(beaconChars.getAdvertisingIntervalMillis()));
+						measuredPowerEditView.setText(String.valueOf(beaconChars.getMeasuredPower()));
 						txTextView.setText(matchtxvalue(beaconChars.getTX()));
-						BRTBeaconConnectionDemoActivity.this.txpower = beaconChars
-								.getTX();
+						BRTBeaconConnectionDemoActivity.this.txpower = beaconChars.getTX();
 						nameEditView.setText(new String(beaconChars.getName()));
 						afterConnectedView.setVisibility(View.VISIBLE);
-						state = beaconChars.getDevolMode();
+						pMode = beaconChars.getDevolMode();
 						if (beaconChars.getDevolMode() == 1) {
 							modeSwitch.setChecked(true);
 						} else {
 							modeSwitch.setChecked(false);
 						}
 						switch (beaconChars.getTX()) {
-						case BRTBeaconPowerLevelMinus23:
-							radioButtondbm23.setChecked(true);
-							break;
-						case BRTBeaconPowerLevelMinus6:
-							radioButtondbm6.setChecked(true);
-							break;
-						case BRTBeaconPowerLevelDefault:
-							radioButtondbm0.setChecked(true);
-							break;
-						case BRTBeaconPowerLevelPlus4:
-							radioButtondbm4.setChecked(true);
-							break;
-						default:
-							break;
+							case BRTBeaconPowerLevelMinus23:
+								radioButtondbm23.setChecked(true);
+								break;
+							case BRTBeaconPowerLevelMinus6:
+								radioButtondbm6.setChecked(true);
+								break;
+							case BRTBeaconPowerLevelDefault:
+								radioButtondbm0.setChecked(true);
+								break;
+							case BRTBeaconPowerLevelPlus4:
+								radioButtondbm4.setChecked(true);
+								break;
+							default:
+								break;
 						}
 					}
 				});
@@ -335,7 +295,7 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 				public void run() {
 					connection.connect();
 				}
-			}, 3000);
+			}, 1000);
 		}
 	}
 
