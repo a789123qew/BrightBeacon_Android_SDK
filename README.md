@@ -1,4 +1,4 @@
-# Bright SDK for Android #
+,# Bright SDK for Android #
 
 ## Overview ##
 
@@ -23,21 +23,25 @@ SDK API文档:
  
 更新日志:
 
-#2.0.3(2014.2.10)#
+#2.1.0(2015.2.25)#
+- 1.修复部分机型扫描bug；
+- 2.修复固件升级bug
+ 
+#2.0.3(2015.2.10)#
 - 1.修复MeasuredPower读取值错误bug
 
-#2.0.2(2014.2.3)#
+#2.0.2(2015.2.3)#
 - 1.优化配置Beacon
 
-#2.0.1(2014.1.29)#
+#2.0.1(2015.1.29)#
 - 1.兼容固件2.0;
 - 2.一些方法名称的改动,详见sdk使用文档
 
-#1.3.1(2014.1.5)#
+#1.3.1(2015.1.5)#
 - 1.MonitoringListener接口中的onExitedRegion()方法新增返回参数(List<.BRTBeacon>);
 - 2.判断一个Beacon离开范围的时间设置为5s。
 
-#1.3.0(2014.1.4)#
+#1.3.0(2015.1.4)#
 - 1.所有涉及测量功率的方法都使用枚举BRTBeaconPower;
 - 2.BRTBeaconManager类新增startMonitoringForRegion()开启后台服务扫描Beacon。
 
