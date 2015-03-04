@@ -58,15 +58,12 @@ public class BRTLeDeviceListAdapter extends BaseAdapter {
 
 	private void bind(BRTBeacon beacon, View view) {
 		ViewHolder holder = (ViewHolder) view.getTag();
-		holder.macTextView.setText(String.format(
-				"Name: %s \nMac: %s \nDistance:%.2f米 \nUUID: %s", TextUtils
-						.isEmpty(beacon.getName()) ? "" : beacon.getName(),
-				beacon.getMacAddress(), Utils.computeAccuracy(beacon), beacon
-						.getProximityUUID().toUpperCase()));
+		holder.macTextView.setText(String.format("Name: %s \nMac: %s \nDistance:%.2f米 \nUUID: %s",
+				TextUtils.isEmpty(beacon.getName()) ? "" : beacon.getName(), beacon.getMacAddress(),
+				Utils.computeAccuracy(beacon), beacon.getProximityUUID().toUpperCase()));
 		holder.majorTextView.setText("Major: " + beacon.getMajor());
 		holder.minorTextView.setText("Minor: " + beacon.getMinor());
-		holder.measuredPowerTextView.setText("MeasuredPower: "
-				+ beacon.getMeasuredPower());
+		holder.measuredPowerTextView.setText("MeasuredPower: " + beacon.getMeasuredPower());
 		holder.rssiTextView.setText("Rssi: " + beacon.getRssi());
 	}
 

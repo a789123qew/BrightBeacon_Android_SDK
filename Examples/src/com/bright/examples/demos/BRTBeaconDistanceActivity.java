@@ -24,8 +24,7 @@ import com.brtbeacon.sdk.service.RangingResult;
  */
 public class BRTBeaconDistanceActivity extends Activity {
 
-	private static final String TAG = BRTBeaconDistanceActivity.class
-			.getSimpleName();
+	private static final String TAG = BRTBeaconDistanceActivity.class.getSimpleName();
 	// Y positions are relative to height of bg_distance image.
 	private static final double RELATIVE_START_POS = 320.0 / 1110.0;
 	private static final double RELATIVE_STOP_POS = 885.0 / 1110.0;
@@ -46,13 +45,11 @@ public class BRTBeaconDistanceActivity extends Activity {
 		setContentView(R.layout.distance_view);
 		dotView = findViewById(R.id.dot);
 
-		beacon = getIntent().getParcelableExtra(
-				BRTBeaconManagerListBeaconsActivity.EXTRAS_BEACON);
-		region = new BRTRegion("regionid", beacon.getProximityUUID(),
-				beacon.getMacAddress(), beacon.getMajor(), beacon.getMinor());
+		beacon = getIntent().getParcelableExtra(BRTBeaconManagerListBeaconsActivity.EXTRAS_BEACON);
+		region = new BRTRegion("regionid", beacon.getProximityUUID(), beacon.getMacAddress(), beacon.getMajor(),
+				beacon.getMinor());
 		if (beacon == null) {
-			Toast.makeText(this, "Beacon not found in intent extras",
-					Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Beacon not found in intent extras", Toast.LENGTH_LONG).show();
 			finish();
 		}
 
@@ -68,8 +65,7 @@ public class BRTBeaconDistanceActivity extends Activity {
 
 						BRTBeacon foundBeacon = null;
 						for (BRTBeacon rangedBeacon : (List<BRTBeacon>) rangingResult.sortBeacons) {
-							if (rangedBeacon.getMacAddress().equals(
-									beacon.getMacAddress())) {
+							if (rangedBeacon.getMacAddress().equals(beacon.getMacAddress())) {
 								foundBeacon = rangedBeacon;
 							}
 						}
@@ -83,23 +79,19 @@ public class BRTBeaconDistanceActivity extends Activity {
 		});
 
 		final View view = findViewById(R.id.sonar);
-		view.getViewTreeObserver().addOnGlobalLayoutListener(
-				new ViewTreeObserver.OnGlobalLayoutListener() {
-					@Override
-					public void onGlobalLayout() {
-						view.getViewTreeObserver()
-								.removeOnGlobalLayoutListener(this);
+		view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+			@Override
+			public void onGlobalLayout() {
+				view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
-						startY = (int) (RELATIVE_START_POS * view
-								.getMeasuredHeight());
-						int stopY = (int) (RELATIVE_STOP_POS * view
-								.getMeasuredHeight());
-						segmentLength = stopY - startY;
+				startY = (int) (RELATIVE_START_POS * view.getMeasuredHeight());
+				int stopY = (int) (RELATIVE_STOP_POS * view.getMeasuredHeight());
+				segmentLength = stopY - startY;
 
-						dotView.setVisibility(View.VISIBLE);
-						dotView.setTranslationY(computeDotPosY(beacon));
-					}
-				});
+				dotView.setVisibility(View.VISIBLE);
+				dotView.setTranslationY(computeDotPosY(beacon));
+			}
+		});
 	}
 
 	private void updateDistanceView(BRTBeacon foundBeacon) {

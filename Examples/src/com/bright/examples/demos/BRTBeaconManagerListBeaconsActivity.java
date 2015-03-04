@@ -33,12 +33,10 @@ public class BRTBeaconManagerListBeaconsActivity extends Activity {
 	/**
 	 * 用于标识扫描指定uuid的设备 uuid为null 表示扫描所有
 	 */
-	private static final BRTRegion ALL_BRIGHT_BEACONS_REGION = new BRTRegion(
-			"rid", null, null, null, null);
+	private static final BRTRegion ALL_BRIGHT_BEACONS_REGION = new BRTRegion("rid", null, null, null, null);
 
 	private static final String BRIGHT_PROXIMITY_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
-	private static final BRTRegion BRIGHT_BEACONS_REGION = new BRTRegion("rid",
-			BRIGHT_PROXIMITY_UUID, null, null, null);
+	private static final BRTRegion BRIGHT_BEACONS_REGION = new BRTRegion("rid", BRIGHT_PROXIMITY_UUID, null, null, null);
 	private BRTBeaconManager beaconManager;
 	private BRTLeDeviceListAdapter adapter;
 
@@ -64,8 +62,7 @@ public class BRTBeaconManagerListBeaconsActivity extends Activity {
 					@Override
 					public void run() {
 
-						getActionBar().setSubtitle(
-								"附近Beacon个数: " + rangingResult.beacons.size());
+						getActionBar().setSubtitle("附近Beacon个数: " + rangingResult.beacons.size());
 						adapter.replaceWith(rangingResult.sortBeacons);
 					}
 				});
@@ -111,8 +108,7 @@ public class BRTBeaconManagerListBeaconsActivity extends Activity {
 
 		// 如果未打开蓝牙，则请求打开蓝牙。
 		if (!beaconManager.isBluetoothEnabled()) {
-			Intent enableBtIntent = new Intent(
-					BluetoothAdapter.ACTION_REQUEST_ENABLE);
+			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 		} else {
 			connectToService();
@@ -165,18 +161,14 @@ public class BRTBeaconManagerListBeaconsActivity extends Activity {
 	private AdapterView.OnItemClickListener createOnItemClickListener() {
 		return new AdapterView.OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 				if (getIntent().getStringExtra(EXTRAS_TARGET_ACTIVITY) != null) {
 
 					try {
-						Class<?> clazz = Class.forName(getIntent()
-								.getStringExtra(EXTRAS_TARGET_ACTIVITY));
-						Intent intent = new Intent(BRTBeaconManagerListBeaconsActivity.this,
-								clazz);
-						intent.putExtra(EXTRAS_BEACON,
-								adapter.getItem(position));
+						Class<?> clazz = Class.forName(getIntent().getStringExtra(EXTRAS_TARGET_ACTIVITY));
+						Intent intent = new Intent(BRTBeaconManagerListBeaconsActivity.this, clazz);
+						intent.putExtra(EXTRAS_BEACON, adapter.getItem(position));
 						startActivity(intent);
 					} catch (ClassNotFoundException e) {
 						Log.e(TAG, "Finding class by name failed", e);

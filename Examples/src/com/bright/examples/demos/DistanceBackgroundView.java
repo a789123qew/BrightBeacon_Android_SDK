@@ -19,8 +19,7 @@ public class DistanceBackgroundView extends View {
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 
-		int width = drawable.getIntrinsicWidth() * canvas.getHeight()
-				/ drawable.getIntrinsicHeight();
+		int width = drawable.getIntrinsicWidth() * canvas.getHeight() / drawable.getIntrinsicHeight();
 		int deltaX = (width - canvas.getWidth()) / 2;
 		drawable.setBounds(-deltaX, 0, width - deltaX, canvas.getHeight());
 		drawable.draw(canvas);

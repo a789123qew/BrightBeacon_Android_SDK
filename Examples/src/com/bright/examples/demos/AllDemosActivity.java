@@ -16,42 +16,33 @@ public class AllDemosActivity extends Activity {
 
 		setContentView(R.layout.all_demos);
 
-		findViewById(R.id.distance_demo_button).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Intent intent = new Intent(AllDemosActivity.this,
-								BRTBeaconManagerListBeaconsActivity.class);
-						intent.putExtra(
-								BRTBeaconManagerListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
-								BRTBeaconDistanceActivity.class.getName());
-						startActivity(intent);
-					}
-				});
-		findViewById(R.id.notify_demo_button).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Intent intent = new Intent(AllDemosActivity.this,
-								BRTBeaconManagerListBeaconsActivity.class);
-						intent.putExtra(
-								BRTBeaconManagerListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
-								BRTNotifyDemoActivity.class.getName());
-						startActivity(intent);
-					}
-				});
-		findViewById(R.id.characteristics_demo_button).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Intent intent = new Intent(AllDemosActivity.this,
-								BRTBeaconManagerListBeaconsActivity.class);
-						intent.putExtra(
-								BRTBeaconManagerListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
-								BRTBeaconConnectionDemoActivity.class.getName());
-						startActivity(intent);
-					}
-				});
+		findViewById(R.id.distance_demo_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(AllDemosActivity.this, BRTBeaconManagerListBeaconsActivity.class);
+				intent.putExtra(BRTBeaconManagerListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
+						BRTBeaconDistanceActivity.class.getName());
+				startActivity(intent);
+			}
+		});
+		findViewById(R.id.notify_demo_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(AllDemosActivity.this, BRTBeaconManagerListBeaconsActivity.class);
+				intent.putExtra(BRTBeaconManagerListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
+						BRTNotifyDemoActivity.class.getName());
+				startActivity(intent);
+			}
+		});
+		findViewById(R.id.characteristics_demo_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(AllDemosActivity.this, BRTBeaconManagerListBeaconsActivity.class);
+				intent.putExtra(BRTBeaconManagerListBeaconsActivity.EXTRAS_TARGET_ACTIVITY,
+						BRTBeaconConnectionDemoActivity.class.getName());
+				startActivity(intent);
+			}
+		});
 
 	}
 
