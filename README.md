@@ -25,8 +25,10 @@ SDK API文档:
 
 
 #2.3.0(2015.3.16)#
-- 2.3.0SDK迭代主要内容：
--1.添加异常信息类BRTThrowable，BRTBeaconManager类中添加方法registerApp，getAppKey；具体API使用请看文档说明。
+ SDK2.3.0迭代主要内容：
+ 
+- 1.添加异常信息类BRTThrowable，BRTBeaconManager类中添加方法registerApp，getAppKey。具体API使用请看文档说明。
+- 2.内部代码优化
 
 #2.2.0(2015.3.4)#
 - 1.扫描代码优化
