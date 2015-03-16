@@ -1,5 +1,7 @@
 package com.bright.examples.demos;
 
+import com.brtbeacon.sdk.BRTBeaconManager;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +17,8 @@ public class AllDemosActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.all_demos);
+		// 注册应用，初始化，在应用启动Activity或者Application派生类执行
+		BRTBeaconManager.registerApp(this, "e71e63ce42a40f3d43b3e47c64344075");
 
 		findViewById(R.id.distance_demo_button).setOnClickListener(new View.OnClickListener() {
 			@Override

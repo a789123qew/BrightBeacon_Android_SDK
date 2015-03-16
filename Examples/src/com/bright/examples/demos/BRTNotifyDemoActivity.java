@@ -47,7 +47,6 @@ public class BRTNotifyDemoActivity extends Activity {
 
 			@Override
 			public void onEnteredRegion(BRTRegion arg0, List<BRTBeacon> arg1) {
-				arg1.get(0).getProximityUUID();
 				postNotification("进入感应区域");
 			}
 

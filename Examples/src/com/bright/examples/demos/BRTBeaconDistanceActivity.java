@@ -64,7 +64,7 @@ public class BRTBeaconDistanceActivity extends Activity {
 					public void run() {
 
 						BRTBeacon foundBeacon = null;
-						for (BRTBeacon rangedBeacon : (List<BRTBeacon>) rangingResult.sortBeacons) {
+						for (BRTBeacon rangedBeacon : (List<BRTBeacon>) rangingResult.beacons) {
 							if (rangedBeacon.getMacAddress().equals(beacon.getMacAddress())) {
 								foundBeacon = rangedBeacon;
 							}

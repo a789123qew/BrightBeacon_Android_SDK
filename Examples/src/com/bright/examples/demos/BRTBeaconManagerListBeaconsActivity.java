@@ -45,7 +45,6 @@ public class BRTBeaconManagerListBeaconsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-
 		adapter = new BRTLeDeviceListAdapter(this);
 		ListView list = (ListView) findViewById(R.id.device_list);
 		list.setAdapter(adapter);
@@ -63,7 +62,7 @@ public class BRTBeaconManagerListBeaconsActivity extends Activity {
 					public void run() {
 
 						getActionBar().setSubtitle("附近Beacon个数: " + rangingResult.beacons.size());
-						adapter.replaceWith(rangingResult.sortBeacons);
+						adapter.replaceWith(rangingResult.beacons);
 					}
 				});
 			}

@@ -159,8 +159,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="设备模式"
-                        android:textOff="开发模式"
-                        android:textOn="发布模式" />
+                        android:textOff="关闭"
+                        android:textOn="开启" />
                 </LinearLayout>
 
                 <LinearLayout

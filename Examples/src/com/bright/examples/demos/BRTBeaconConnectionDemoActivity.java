@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.brtbeacon.sdk.BRTBeacon;
 import com.brtbeacon.sdk.BRTBeaconPower;
+import com.brtbeacon.sdk.BRTThrowable;
 import com.brtbeacon.sdk.ConfigBeacon;
 import com.brtbeacon.sdk.connection.BRTBeaconConnection;
 import com.brtbeacon.sdk.connection.BeaconCharacteristics;
@@ -163,7 +164,7 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 			}
 
 			@Override
-			public void onError() {
+			public void onError(BRTThrowable throwable) {
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
@@ -260,7 +261,7 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 			}
 
 			@Override
-			public void onAuthenticationError() {
+			public void onAuthenticationError(BRTThrowable throwable) {
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
