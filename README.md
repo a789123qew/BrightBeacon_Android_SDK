@@ -11,7 +11,7 @@ SDK包括的功能:
 - Beacon 广播扫描
 - Beacon 范围监听
 - Beacon 特征值读取写入
--  详细功能查看[API文档](http://brightbeacon.github.io/BrightBeacon_Android_SDK)和演示[demos](https://github.com/BrightBeacon/Android-SDK/tree/master/Examples) in the SDK
+-  详细功能查看[API文档](http://brightbeacon.github.io/BrightBeacon_Android_SDK)和演示[示例工程](https://github.com/BrightBeacon/Android-SDK/tree/master/Examples) in the SDK
 
 SDK API文档: 
 
@@ -19,7 +19,7 @@ SDK API文档:
 
 公司官网:
 
- - [重庆智石网络科技有限公司](http://www.brtbeacon.com)
+ - [智石科技](http://www.brtbeacon.com)
  
 更新日志:
 

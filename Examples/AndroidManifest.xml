@@ -19,7 +19,7 @@
     <!-- 設置是否允许在沒有BLE的设备运行. -->
     <uses-feature
         android:name="android.hardware.bluetooth_le"
-        android:required="true" />
+        android:required="false" />
 
     <application
         android:icon="@drawable/beacon_gray"
