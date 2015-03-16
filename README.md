@@ -1,4 +1,4 @@
-,# Bright SDK for Android #
+# Bright SDK for Android #
 
 ## Overview ##
 
