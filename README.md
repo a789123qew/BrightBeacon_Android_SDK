@@ -1,8 +1,8 @@
-# Bright SDK for Android #
+# Bright Beacon SDK for Android#
 
 ## Overview ##
 
-Bright SDK for Android是一个库，以便与iBeacons互动。该SDK系统要求Android4.3或以上，蓝牙低功耗（BLE）。
+Bright Beacon SDK for Android是一个库，以便与iBeacons互动。该SDK系统要求Android4.3或以上，蓝牙低功耗（BLE）。
 
 [Bright SDK for iOS](https://github.com/BrightBeacon/iOS-SDK.git)这是IOS SDK链接地址。
 
@@ -11,7 +11,7 @@ SDK包括的功能:
 - Beacon 广播扫描
 - Beacon 范围监听
 - Beacon 特征值读取写入
--  详细功能查看[API文档](http://brightbeacon.github.io/BrightBeacon_Android_SDK)和演示[示例工程](https://github.com/BrightBeacon/Android-SDK/tree/master/Examples) in the SDK
+-  详细功能代码请查看[API文档](http://brightbeacon.github.io/BrightBeacon_Android_SDK)和[示例工程](https://github.com/BrightBeacon/Android-SDK/tree/master/Examples) 
 
 SDK API文档: 
 
