@@ -261,12 +261,12 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 			}
 
 			@Override
-			public void onAuthenticationError(BRTThrowable throwable) {
+			public void onAuthenticationError(final BRTThrowable throwable) {
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
 						cancelDialog();
-						statusView.setText("状态: 验证失败，请检查KEY是否正确.");
+						statusView.setText("状态:"+throwable.getError());
 					}
 				});
 			}
