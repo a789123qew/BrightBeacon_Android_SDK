@@ -17,9 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brtbeacon.sdk.BRTBeacon;
+import com.brtbeacon.sdk.BRTBeaconConfig;
 import com.brtbeacon.sdk.BRTBeaconPower;
 import com.brtbeacon.sdk.BRTThrowable;
-import com.brtbeacon.sdk.ConfigBeacon;
 import com.brtbeacon.sdk.connection.BRTBeaconConnection;
 import com.brtbeacon.sdk.connection.BeaconCharacteristics;
 import com.brtbeacon.sdk.connection.ConnectionCallback;
@@ -140,7 +140,7 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 	 */
 	private void setCharacteristics() {
 		showDialog("配置...");
-		ConfigBeacon configBeacon = new ConfigBeacon();
+		BRTBeaconConfig configBeacon = new BRTBeaconConfig();
 		configBeacon.setName(nameEditView.getText().toString());
 		configBeacon.setUuid(uuidEditView.getText().toString());
 		configBeacon.setMajor(Integer.parseInt(majorEditView.getText().toString()));

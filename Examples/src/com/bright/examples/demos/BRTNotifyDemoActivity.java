@@ -39,7 +39,7 @@ public class BRTNotifyDemoActivity extends Activity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		BRTBeacon beacon = getIntent().getParcelableExtra(BRTBeaconManagerListBeaconsActivity.EXTRAS_BEACON);
-		region = new BRTRegion("regionId", beacon.getProximityUUID(), beacon.getMacAddress(), beacon.getMajor(),
+		region = new BRTRegion("regionId", beacon.getUuid(), beacon.getMacAddress(), beacon.getMajor(),
 				beacon.getMinor());
 		notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		beaconManager = new BRTBeaconManager(this);

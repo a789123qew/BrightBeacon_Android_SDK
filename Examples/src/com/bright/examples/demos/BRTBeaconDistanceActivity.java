@@ -46,7 +46,7 @@ public class BRTBeaconDistanceActivity extends Activity {
 		dotView = findViewById(R.id.dot);
 
 		beacon = getIntent().getParcelableExtra(BRTBeaconManagerListBeaconsActivity.EXTRAS_BEACON);
-		region = new BRTRegion("regionid", beacon.getProximityUUID(), beacon.getMacAddress(), beacon.getMajor(),
+		region = new BRTRegion("regionid", beacon.getUuid(), beacon.getMacAddress(), beacon.getMajor(),
 				beacon.getMinor());
 		if (beacon == null) {
 			Toast.makeText(this, "Beacon not found in intent extras", Toast.LENGTH_LONG).show();
