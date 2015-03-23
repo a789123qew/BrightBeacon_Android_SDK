@@ -28,6 +28,7 @@ SDK API文档:
 - 1.ConfigBeacon类名修改为BRTBeaconConfig;
 - 2.方法getProximityUUID()统一为getUuid();
 - 3.固件更新代码优化
+
 #2.3.1(2015.3.18)#
 - 1.内部代码优化;
 
