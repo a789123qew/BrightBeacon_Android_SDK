@@ -24,7 +24,11 @@ SDK API文档:
 更新日志:
 
 
-#2.3.3(2015.0.23)#
+#2.4.1(2015.3.27)#
+- 1.修改getTX方法名为getTxPower;
+- 2.添加方法getgetTemperatureIntervalMillis,getBatteryIntervalMillis,getLightIntervalMillis
+
+#2.3.3(2015.3.23)#
 - 1.ConfigBeacon类名修改为BRTBeaconConfig;
 - 2.方法getProximityUUID()统一为getUuid();
 - 3.固件更新代码优化

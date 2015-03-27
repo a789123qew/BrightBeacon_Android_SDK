@@ -145,7 +145,7 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 		configBeacon.setUuid(uuidEditView.getText().toString());
 		configBeacon.setMajor(Integer.parseInt(majorEditView.getText().toString()));
 		configBeacon.setMinor(Integer.parseInt(minorEditView.getText().toString()));
-		configBeacon.setIntervalMillis(Integer.parseInt(intervalEditView.getText().toString()));
+		configBeacon.setAdIntervalMillis(Integer.parseInt(intervalEditView.getText().toString()));
 		configBeacon.setTxPower(BRTBeaconConnectionDemoActivity.this.txpower);
 		configBeacon.setMeasuredPower(Integer.parseInt(measuredPowerEditView.getText().toString()));
 		configBeacon.setdevolMode(pMode);
@@ -227,11 +227,11 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 						cancelDialog();
 						majorEditView.setText(String.valueOf(beaconChars.getMajor()));
 						minorEditView.setText(String.valueOf(beaconChars.getMinor()));
-						uuidEditView.setText(String.valueOf(beaconChars.getUUID()));
+						uuidEditView.setText(String.valueOf(beaconChars.getUuid()));
 						intervalEditView.setText(String.valueOf(beaconChars.getAdvertisingIntervalMillis()));
 						measuredPowerEditView.setText(String.valueOf(beaconChars.getMeasuredPower()));
-						txTextView.setText(matchtxvalue(beaconChars.getTX()));
-						BRTBeaconConnectionDemoActivity.this.txpower = beaconChars.getTX();
+						txTextView.setText(matchtxvalue(beaconChars.getTxPower()));
+						BRTBeaconConnectionDemoActivity.this.txpower = beaconChars.getTxPower();
 						nameEditView.setText(new String(beaconChars.getName()));
 						afterConnectedView.setVisibility(View.VISIBLE);
 						pMode = beaconChars.getDevolMode();
@@ -240,7 +240,7 @@ public class BRTBeaconConnectionDemoActivity extends Activity {
 						} else {
 							modeSwitch.setChecked(false);
 						}
-						switch (beaconChars.getTX()) {
+						switch (beaconChars.getTxPower()) {
 							case BRTBeaconPowerLevelMinus23:
 								radioButtondbm23.setChecked(true);
 								break;
