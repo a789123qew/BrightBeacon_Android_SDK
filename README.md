@@ -24,6 +24,10 @@ SDK API文档:
 更新日志:
 
 
+#3.1.0(2015.3.30)#
+- 1.兼容新固件;
+- 2.内部代码优化
+
 #2.4.1(2015.3.27)#
 - 1.修改getTX方法名为getTxPower;
 - 2.添加方法getgetTemperatureIntervalMillis,getBatteryIntervalMillis,getLightIntervalMillis
