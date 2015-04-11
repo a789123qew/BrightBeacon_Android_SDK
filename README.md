@@ -24,6 +24,11 @@ SDK API文档:
 更新日志:
 
 
+#3.1.3(2015.4.11)#
+- 1.com.brtbeacon.sdk.BRTBeaconManager.hasBluetooth()方法更名为com.brtbeacon.sdk.BRTBeaconManager.hasBluetoothle();
+- 2.修复修改名字bug；
+- 3.统计代码优化
+
 #3.1.2(2015.4.1)#
 - 1.统计代码优化
 
