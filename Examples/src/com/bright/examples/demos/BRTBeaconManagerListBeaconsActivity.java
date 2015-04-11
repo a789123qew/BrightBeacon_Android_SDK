@@ -100,7 +100,7 @@ public class BRTBeaconManagerListBeaconsActivity extends Activity {
 		super.onStart();
 
 		// 检查是否支持蓝牙低功耗
-		if (!beaconManager.hasBluetooth()) {
+		if (!beaconManager.hasBluetoothle()) {
 			Toast.makeText(this, "该设备没有BLE,不支持本软件.", Toast.LENGTH_LONG).show();
 			return;
 		}
